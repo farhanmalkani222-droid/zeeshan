@@ -9,6 +9,12 @@ Replies to DMs on @hawa_taps_ through Meta's **official** Instagram Messaging AP
 4. Customer silent 3h -> one follow-up. Ahmed bhai types manually -> bot goes quiet for that customer.
 5. Photos/voice notes -> polite "Ahmed bhai dekhenge". Safety cap: 40 bot messages/customer/hour.
 
+## Extra powers
+- Typo-tolerant matching (kimmat, warrenty, mazbut all work) and two questions in one message get both answers.
+- Customer says a quantity ("10 taps chahiye") -> bot quotes the total (10 x price) and asks for name, address, pincode.
+- Customer sends pincode or phone -> order saved. See buyers with `python3 orders.py` (or `--csv`).
+- Try the bot in the terminal: `python3 chat.py`.
+
 ## Setup (one time, ~30 min)
 1. Instagram account must be **Business/Creator** (Settings > Account type).
 2. developers.facebook.com > Create App (Business) > add **Instagram** product > *API setup with Instagram login*.

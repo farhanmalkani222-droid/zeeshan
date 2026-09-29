@@ -8,7 +8,8 @@ class Store:
         CREATE TABLE IF NOT EXISTS msgs(uid TEXT, role TEXT, text TEXT, ts REAL);
         CREATE TABLE IF NOT EXISTS conv(uid TEXT PRIMARY KEY, last_ts REAL, last_role TEXT,
                                         followups INTEGER DEFAULT 0, handoff INTEGER DEFAULT 0);
-        CREATE TABLE IF NOT EXISTS seen(mid TEXT PRIMARY KEY);""")
+        CREATE TABLE IF NOT EXISTS seen(mid TEXT PRIMARY KEY);
+        CREATE TABLE IF NOT EXISTS leads(uid TEXT, status TEXT, qty INTEGER, pincode TEXT, phone TEXT, details TEXT, ts REAL);""")
 
     def seen(self, mid):
         try:
@@ -34,6 +35,14 @@ class Store:
     def bot_sent_since(self, uid, seconds):
         return self.db.execute("SELECT COUNT(*) FROM msgs WHERE uid=? AND role='bot' AND ts>?",
                                (uid, time.time() - seconds)).fetchone()[0]
+
+    def add_lead(self, uid, status, qty, pincode, phone, details):
+        self.db.execute("INSERT INTO leads VALUES(?,?,?,?,?,?,?)", (uid, status, qty, pincode, phone, details, time.time()))
+        self.db.commit()
+
+    def leads(self, status=None):
+        q = "SELECT uid,status,qty,pincode,phone,details,ts FROM leads" + (" WHERE status=?" if status else "") + " ORDER BY ts"
+        return self.db.execute(q, (status,) if status else ()).fetchall()
 
     def user_message_count(self, uid):
         r = self.db.execute("SELECT COUNT(*) FROM msgs WHERE uid=? AND role='user'", (uid,)).fetchone()

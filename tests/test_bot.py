@@ -53,6 +53,22 @@ class T(unittest.TestCase):
     def test_price_answers_only_price(self):
         m = self.b.reply("u1", "price?")
         self.assertEqual(len(m), 1); self.assertIn("₹300", m[0]); self.assertNotIn("warranty", m[0].lower())
+    def test_typo_tolerant(self):
+        self.assertIn("₹300", ' '.join(self.b.reply("u1", "bhai kimmat kya hai")))
+        self.assertIn("warranty", ' '.join(self.b.reply("u2", "warrenty milti hai?")).lower())
+    def test_two_questions_one_reply(self):
+        r = ' '.join(self.b.reply("u1", "price aur size batao"))
+        self.assertIn("₹300", r); self.assertIn("half inch", r)
+    def test_quantity_quote(self):
+        r = ' '.join(self.b.reply("u1", "10 taps chahiye"))
+        self.assertIn("₹3000", r)
+        self.assertEqual(self.b.store.leads("interested")[0][2], 10)
+    def test_order_lead_saved(self):
+        self.b.reply("u1", "50 nal chahiye")
+        r = ' '.join(self.b.reply("u1", "Ali Khan, Bhiwandi, 421302, 9876543210"))
+        self.assertIn("order note", r)
+        lead = self.b.store.leads("order")[0]
+        self.assertEqual((lead[2], lead[3], lead[4]), (50, "421302", "9876543210"))
     def test_honest_about_bot(self):
         self.assertIn("automated", ' '.join(self.b.reply("u1", "are you a bot?")))
     def test_fallback_no_llm(self):
