@@ -104,10 +104,29 @@ class H(BaseHTTPRequestHandler):
         self.send_response(200 if ok else 403); self.end_headers()
         if ok: self.wfile.write(q["hub.challenge"][0].encode())
 
+    def _manychat(self, raw):
+        """ManyChat 'External Request' -> our brain. No Meta app needed on our side."""
+        secret = os.environ.get("MANYCHAT_SECRET", "")
+        if not secret or not hmac.compare_digest(self.headers.get("X-Bot-Secret", ""), secret):
+            self.send_response(403); self.end_headers(); return
+        try:
+            body = json.loads(raw)
+            uid, text = str(body["user_id"]), str(body["text"])
+        except (ValueError, KeyError):
+            self.send_response(400); self.end_headers(); return
+        with _locks[uid]:
+            msgs = brain.reply(uid, text)[:10]
+        out = json.dumps({"version": "v2", "content": {"type": "instagram",
+                          "messages": [{"type": "text", "text": m} for m in msgs]}}).encode()
+        self.send_response(200); self.send_header("Content-Type", "application/json"); self.end_headers()
+        self.wfile.write(out)
+
     def do_POST(self):
         raw = self.rfile.read(int(self.headers.get("Content-Length", 0)))
+        if urlparse(self.path).path == "/manychat":
+            return self._manychat(raw)
         sig = self.headers.get("X-Hub-Signature-256", "")
-        exp = "sha256=" + hmac.new(os.environ["APP_SECRET"].encode(), raw, hashlib.sha256).hexdigest()
+        exp = "sha256=" + hmac.new(os.environ.get("APP_SECRET", "").encode(), raw, hashlib.sha256).hexdigest()
         if not hmac.compare_digest(sig, exp):
             self.send_response(403); self.end_headers(); return
         try:
@@ -118,10 +137,11 @@ class H(BaseHTTPRequestHandler):
         threading.Thread(target=handle, args=(payload,), daemon=True).start()
 
 if __name__ == "__main__":
-    missing = [k for k in ("VERIFY_TOKEN", "APP_SECRET", "IG_TOKEN", "IG_ID") if not os.environ.get(k)]
-    if missing:
-        sys.exit(f"Missing env vars: {', '.join(missing)} (see README.md)")
-    threading.Thread(target=followup_loop, daemon=True).start()
+    direct = all(os.environ.get(k) for k in ("VERIFY_TOKEN", "APP_SECRET", "IG_TOKEN", "IG_ID"))
+    if not direct and not os.environ.get("MANYCHAT_SECRET"):
+        sys.exit("Set MANYCHAT_SECRET (ManyChat mode, no Meta app) or VERIFY_TOKEN, APP_SECRET, IG_TOKEN, IG_ID (direct mode). See README.md")
+    if direct:
+        threading.Thread(target=followup_loop, daemon=True).start()
     port = int(os.environ.get("PORT", 8080))
     log.info("Hawa Taps bot listening on :%d", port)
     ThreadingHTTPServer(("", port), H).serve_forever()

@@ -19,5 +19,7 @@ services:
         sync: false
       - key: IG_ID
         sync: false
+      - key: MANYCHAT_SECRET
+        sync: false
       - key: ANTHROPIC_API_KEY
         sync: false

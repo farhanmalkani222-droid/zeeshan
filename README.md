@@ -15,6 +15,9 @@ Replies to DMs on @hawa_taps_ through Meta's **official** Instagram Messaging AP
 - Customer sends pincode or phone -> order saved. See buyers with `python3 orders.py` (or `--csv`).
 - Try the bot in the terminal: `python3 chat.py`.
 
+## No Meta app? ManyChat mode
+See `MANYCHAT_BRAIN.md`: ManyChat handles the Instagram connection, our bot answers via `POST /manychat` (env `MANYCHAT_SECRET` only).
+
 ## Setup (one time, ~30 min)
 1. Instagram account must be **Business/Creator** (Settings > Account type).
 2. developers.facebook.com > Create App (Business) > add **Instagram** product > *API setup with Instagram login*.
