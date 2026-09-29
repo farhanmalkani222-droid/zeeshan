@@ -53,7 +53,7 @@
         "courier",
         "ship"
       ],
-      "answer": "Delivery courier se All India hoti hai, jahan aapko chahiye wahan pahunch jaata hai. Maal Taloja MIDC factory area se bheja jaata hai. Apna pincode bhej dein, delivery time confirm kar deta hoon."
+      "answer": "{city_line}Delivery courier se All India hoti hai, jahan aapko chahiye wahan pahunch jaata hai. Maal Taloja MIDC factory area se bheja jaata hai. Apna pincode bhej dein, delivery time confirm kar deta hoon."
     },
     {
       "id": "cod",

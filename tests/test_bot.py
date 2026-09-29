@@ -19,6 +19,11 @@ class T(unittest.TestCase):
     def test_delivery_all_india(self):
         r = self.b.reply("u1", "Delhi delivery hoti hai?")
         self.assertIn("All India", r)
+    def test_rapport_only_if_configured(self):
+        self.assertNotIn("pehle bhi", self.b.reply("u1", "Mira Road delivery hoti hai?"))
+        c2 = dict(cfg, past_shipment_cities=["mira road"])
+        b2 = Brain(c2, entries, Store(tempfile.mktemp()))
+        self.assertIn("Mira Road mein humara maal pehle bhi", b2.reply("u1", "Mira Road delivery hoti hai?"))
     def test_honest_about_bot(self):
         self.assertIn("automated", self.b.reply("u1", "are you a bot?"))
     def test_fallback_no_llm(self):

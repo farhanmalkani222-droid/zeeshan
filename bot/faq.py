@@ -17,7 +17,12 @@ def ranked(text, entries):
     return [(sc, e) for sc, _, e in s if sc > 0]
 
 def city_line(text, cfg):
-    return ""  # delivery is all-India by courier; no per-city claims needed
+    """Rapport line, only for cities the owner listed as genuinely shipped to."""
+    t = text.lower()
+    for c in cfg.get("past_shipment_cities", []):
+        if c.lower() in t:
+            return f"{c.title()} mein humara maal pehle bhi ja chuka hai. "
+    return ""
 
 def answer(text, entries, cfg, threshold=1):
     r = ranked(text, entries)
