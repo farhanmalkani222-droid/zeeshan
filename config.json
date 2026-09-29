@@ -1,0 +1,14 @@
+{
+  "shop_name": "Ahmed Taps",
+  "owner_name": "Ahmed bhai",
+  "product": "taps",
+  "served_cities": ["mira road", "bhayandar", "mira bhayandar", "mumbai", "thane"],
+  "origin": "TODO: Faisal sir se confirm karke likhein (factory / jagah jahan se maal aata hai)",
+  "followup_after_hours": 3,
+  "followup_max": 1,
+  "llm_enabled": true,
+  "llm_model": "claude-haiku-4-5-20251001",
+  "llm_max_output_tokens": 150,
+  "history_turns": 4,
+  "match_threshold": 1
+}
