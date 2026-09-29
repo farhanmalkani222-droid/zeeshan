@@ -20,6 +20,7 @@ GRAPH_BASE = os.environ.get("GRAPH_BASE", "https://graph.instagram.com/v21.0")
 MEDIA_REPLY = "Aapka message mil gaya. {owner} khud dekh kar jaldi reply karenge. Tab tak koi sawaal ho toh text mein likh dein."
 MAX_BOT_MSGS_PER_HOUR = 40
 _locks = defaultdict(threading.Lock)
+ALLOWED = {u.strip() for u in os.environ.get("ALLOWED_USER_IDS", "").split(",") if u.strip()}  # test mode: reply only to these
 
 def send(uid, text):
     """Official Send API with retry/backoff. Returns Meta's message id."""
@@ -55,6 +56,9 @@ def handle_event(ev):
     if brain.store.seen(m.get("mid", "")):
         return
     uid = ev["sender"]["id"]
+    if ALLOWED and uid not in ALLOWED:
+        log.info("test mode: ignoring message from %s (add to ALLOWED_USER_IDS to let the bot reply)", uid)
+        return
     with _locks[uid]:  # keep replies in order if customer sends several messages quickly
         text = m.get("text")
         if text:
