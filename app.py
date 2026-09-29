@@ -31,9 +31,9 @@ def handle(payload):
             if brain.store.seen(m.get("mid", "")) or not m.get("text"):
                 continue
             uid = ev["sender"]["id"]
-            out = brain.reply(uid, m["text"])
-            if out:
-                send(uid, out)
+            for i, msg in enumerate(brain.reply(uid, m["text"])):
+                if i: time.sleep(1.2)  # small pause between multi-part replies
+                send(uid, msg)
 
 def followup_loop():
     while True:

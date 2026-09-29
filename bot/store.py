@@ -24,6 +24,10 @@ class Store:
             ON CONFLICT(uid) DO UPDATE SET {fu} last_ts=?, last_role=?""", (uid, now, role, now, role))
         self.db.commit()
 
+    def user_message_count(self, uid):
+        r = self.db.execute("SELECT COUNT(*) FROM msgs WHERE uid=? AND role='user'", (uid,)).fetchone()
+        return r[0] if r else 0
+
     def history(self, uid, n):
         rows = self.db.execute("SELECT role,text FROM msgs WHERE uid=? ORDER BY ts DESC LIMIT ?", (uid, n)).fetchall()
         return rows[::-1]

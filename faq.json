@@ -71,9 +71,39 @@
         "return",
         "replace",
         "exchange",
-        "kharab"
+        "kharab",
+        "toot gaya",
+        "repair"
       ],
-      "answer": "Product pe warranty/replacement ki policy hai. Kaunsa model hai bata dein, details share karta hoon."
+      "answer": "1 saal ki warranty hai. Nal kharab ho jaaye toh Ahmed bhai ko bhej dein, badle mein naya nal free of cost milega inshallah."
+    },
+    {
+      "id": "amazon",
+      "keywords": [
+        "amazon",
+        "online",
+        "compare",
+        "comparison",
+        "market rate",
+        "market mein",
+        "saste",
+        "mehenga",
+        "mahanga"
+      ],
+      "answer": "Isse chhote models Amazon pe ₹350–400 mein bikte hain. Hamare yahan ye wale ₹{price} mein milte hain — bade, mazboot, ABS body aur aluminium button ke saath."
+    },
+    {
+      "id": "saving",
+      "keywords": [
+        "paani bachao",
+        "water saving",
+        "save water",
+        "bachat",
+        "kitna paani bachega",
+        "water waste",
+        "environment"
+      ],
+      "answer": "Ye taps 70–80% paani bachate hain. Ek nal se roz kam-se-kam 60 litre paani ki bachat hoti hai. All India 50,000+ masjids, 30,000+ madarse, aur 1,000+ schools/hospitals mein use ho raha hai."
     },
     {
       "id": "order",
