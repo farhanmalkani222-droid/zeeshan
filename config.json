@@ -3,14 +3,9 @@
   "owner_name": "Ahmed bhai",
   "product": "taps",
   "served_cities": [
-    "nagpada",
-    "mumbai",
-    "mira road",
-    "bhayandar",
-    "mira bhayandar",
-    "thane"
+    "all over India"
   ],
-  "origin": "",
+  "origin": "Hamara maal Taloja MIDC factory area se aata hai.",
   "followup_after_hours": 3,
   "followup_max": 1,
   "llm_enabled": true,
@@ -21,5 +16,5 @@
   "instagram_handle": "hawa_taps_",
   "shop_location": "Nagpada, Mumbai",
   "price": "300",
-  "_origin_note": "origin khaali hai: bot 'confirm karenge' bolega. Faisal sir se factory/jagah lekar yahan likhein."
+  "shipping": "Courier ke through All India delivery, jahan chahiye wahan."
 }

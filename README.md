@@ -15,7 +15,7 @@ Uses Meta's **official Instagram Messaging API** (webhook + Send API). No scrapi
 1. Instagram Business/Creator account linked to a Facebook Page; create a Meta app, add Instagram messaging, get `IG_TOKEN` and `IG_ID`.
 2. Webhook callback URL = `https://<your-host>/`, subscribe to `messages`.
 3. Env vars: `VERIFY_TOKEN`, `APP_SECRET`, `IG_TOKEN`, `IG_ID`, optional `ANTHROPIC_API_KEY`, `PORT`.
-4. Real data set: price ₹300/tap, Nagpada Mumbai, @hawa_taps_. Still needed: `origin` (Faisal sir) in `config.json`. `IG_ID` is the numeric Instagram account ID from Meta, not the handle.
+4. Real data set: price ₹300/tap, Nagpada Mumbai, @hawa_taps_. Origin: Taloja MIDC factory area, courier, All India delivery. `IG_ID` is the numeric Instagram account ID from Meta, not the handle.
 5. `python3 app.py` (tests: `python3 tests/test_bot.py`).
 
 ## Where tokens get used (and how much)

@@ -40,7 +40,7 @@
         "kaun si company",
         "manufacture"
       ],
-      "answer": "{origin}"
+      "answer": "{origin} Courier se All India delivery hoti hai."
     },
     {
       "id": "delivery",
@@ -53,7 +53,7 @@
         "courier",
         "ship"
       ],
-      "answer": "Hum {shop_location} se bhejte hain. {city_line}Apna pincode bhej dein, delivery time confirm kar deta hoon."
+      "answer": "Delivery courier se All India hoti hai, jahan aapko chahiye wahan pahunch jaata hai. Maal Taloja MIDC factory area se bheja jaata hai. Apna pincode bhej dein, delivery time confirm kar deta hoon."
     },
     {
       "id": "cod",
@@ -89,7 +89,7 @@
         "chahiye",
         "kaise le"
       ],
-      "answer": "Bahut badhiya! Kitne taps chahiye, apna naam, pura address aur pincode bhej dein. Hum {shop_location} se bhej denge."
+      "answer": "Bahut badhiya! Kitne taps chahiye, apna naam, pura address aur pincode bhej dein. Courier se aapke paas bhej denge."
     },
     {
       "id": "greeting",

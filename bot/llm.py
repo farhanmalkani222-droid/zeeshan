@@ -12,7 +12,7 @@ def ask(cfg, top_entries, history, user_text):
     if not key or not cfg.get("llm_enabled"):
         return None
     facts = "\n".join(f"- {e['answer']}" for e in top_entries[:3]) or "- (no matching FAQ)"
-    facts += f"\n- Price: Rs {cfg['price']} per tap\n- Shop: {cfg['shop_location']}\n- Served cities: {', '.join(cfg['served_cities'])}"
+    facts += f"\n- Price: Rs {cfg['price']} per tap\n- Shop: {cfg['shop_location']}\n- Delivery: {cfg['shipping']}"
     if cfg.get("origin"):
         facts += f"\n- Origin: {cfg['origin']}"
     sys_p = SYSTEM.format(shop=cfg["shop_name"], product=cfg["product"], owner=cfg["owner_name"], facts=facts)

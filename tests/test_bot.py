@@ -13,14 +13,12 @@ class T(unittest.TestCase):
         self.b = Brain(cfg, entries, Store(tempfile.mktemp()))
     def test_price(self):
         self.assertIn("₹300", self.b.reply("u1", "bhai ye kitne ka hai?"))
-    def test_origin_never_leaks_todo(self):
+    def test_origin(self):
         r = self.b.reply("u1", "maal kahan se aata hai?")
-        self.assertNotIn("TODO", r); self.assertIn("confirm", r)
-    def test_location(self):
-        self.assertIn("Nagpada", self.b.reply("u1", "delivery kaise hoti hai?"))
-    def test_city_only_if_configured(self):
-        self.assertIn("Mira Road", self.b.reply("u1", "Mira Road delivery kab tak?"))
-        self.assertNotIn("Delhi mein hum", self.b.reply("u2", "Delhi delivery kab tak?"))
+        self.assertIn("Taloja MIDC", r); self.assertNotIn("TODO", r)
+    def test_delivery_all_india(self):
+        r = self.b.reply("u1", "Delhi delivery hoti hai?")
+        self.assertIn("All India", r)
     def test_honest_about_bot(self):
         self.assertIn("automated", self.b.reply("u1", "are you a bot?"))
     def test_fallback_no_llm(self):
