@@ -1,0 +1,23 @@
+services:
+  - type: web
+    name: hawa-taps-bot
+    runtime: docker
+    plan: starter
+    healthCheckPath: /health
+    disk:
+      name: data
+      mountPath: /data
+      sizeGB: 1
+    envVars:
+      - key: DB_PATH
+        value: /data/bot.db
+      - key: VERIFY_TOKEN
+        sync: false
+      - key: APP_SECRET
+        sync: false
+      - key: IG_TOKEN
+        sync: false
+      - key: IG_ID
+        sync: false
+      - key: ANTHROPIC_API_KEY
+        sync: false

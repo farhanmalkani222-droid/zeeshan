@@ -21,6 +21,11 @@ Replies to DMs on @hawa_taps_ through Meta's **official** Instagram Messaging AP
 7. Privacy policy URL for App Review: `https://YOUR-HOST/privacy` (served from `privacy.html`; edit if details change).
 8. Go live: Meta App Review for `instagram_business_manage_messages` is required before non-tester customers get replies (Advanced Access).
 
+## Verify it is really working
+- Before deploying: `python3 tests/e2e_mock.py` (full flow against a fake Meta server).
+- After deploying: set the env vars locally and run `python3 check.py https://YOUR-HOST` (checks token, account, webhook handshake, /privacy).
+- One-click host: `render.yaml` is a Render blueprint (Docker + persistent disk).
+
 ## Editing
 - Prices/addresses/warranty: `config.json`. Answers: `faq.json`. Restart after edits.
 - `past_shipment_cities`: only cities Ahmed bhai confirms; enables the "pehle bhi maal gaya" line.

@@ -16,13 +16,14 @@ cfg = json.load(open(os.path.join(HERE, "config.json"), encoding="utf-8"))
 brain = Brain(cfg, faq.load(os.path.join(HERE, "faq.json")),
               Store(os.environ.get("DB_PATH", os.path.join(HERE, "bot.db"))))
 
+GRAPH_BASE = os.environ.get("GRAPH_BASE", "https://graph.instagram.com/v21.0")
 MEDIA_REPLY = "Aapka message mil gaya. {owner} khud dekh kar jaldi reply karenge. Tab tak koi sawaal ho toh text mein likh dein."
 MAX_BOT_MSGS_PER_HOUR = 40
 _locks = defaultdict(threading.Lock)
 
 def send(uid, text):
     """Official Send API with retry/backoff. Returns Meta's message id."""
-    url = f"https://graph.instagram.com/v21.0/{os.environ['IG_ID']}/messages"
+    url = f"{GRAPH_BASE}/{os.environ['IG_ID']}/messages"
     body = json.dumps({"recipient": {"id": uid}, "message": {"text": text}}).encode()
     for attempt in range(4):
         req = urllib.request.Request(url, body, {"Authorization": f"Bearer {os.environ['IG_TOKEN']}",
