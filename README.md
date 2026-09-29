@@ -1,29 +1,31 @@
-# Instagram DM Auto-Reply Bot (Ahmed Taps)
+# Hawa Taps Instagram DM bot
 
-Replies to customer DMs from the shop's own Instagram account and sends one follow-up if the customer goes silent.
-Uses Meta's **official Instagram Messaging API** (webhook + Send API). No scraping, no unofficial login.
+Replies to DMs on @hawa_taps_ through Meta's **official** Instagram Messaging API (no scraping, no unofficial login).
 
-## How it works
-1. Customer DM -> webhook (`app.py`, signature verified).
-2. `bot/faq.py` matches keywords against `faq.json` -> instant answer, **0 tokens**.
-3. No match -> one small Claude Haiku call (`bot/llm.py`). No key / disabled -> polite "Ahmed bhai will confirm" reply.
-4. If the customer asks "bot ho?", it answers honestly. It never invents prices, cities, past orders or origin.
-5. If the owner replies manually from the app, the bot goes silent for that customer.
-6. Follow-up: one fixed template message after `followup_after_hours`, only inside Meta's 24h window.
+## How it replies
+1. First greeting/inquiry -> 4 short messages (price + delivery, locations, warranty, material + Amazon comparison).
+2. Everything else -> `faq.json` keyword match (0 tokens).
+3. No match -> one Claude Haiku call (<=150 output tokens), else "Ahmed bhai confirm karke batayenge".
+4. Customer silent 3h -> one follow-up. Ahmed bhai types manually -> bot goes quiet for that customer.
+5. Photos/voice notes -> polite "Ahmed bhai dekhenge". Safety cap: 40 bot messages/customer/hour.
 
-## Setup
-1. Instagram Business/Creator account linked to a Facebook Page; create a Meta app, add Instagram messaging, get `IG_TOKEN` and `IG_ID`.
-2. Webhook callback URL = `https://<your-host>/`, subscribe to `messages`.
-3. Env vars: `VERIFY_TOKEN`, `APP_SECRET`, `IG_TOKEN`, `IG_ID`, optional `ANTHROPIC_API_KEY`, `PORT`.
-4. Real data set: price ₹300/tap, Nagpada Mumbai, @hawa_taps_. Origin: Taloja MIDC factory area, courier, All India delivery. `IG_ID` is the numeric Instagram account ID from Meta, not the handle.
-5. `python3 app.py` (tests: `python3 tests/test_bot.py`).
+## Setup (one time, ~30 min)
+1. Instagram account must be **Business/Creator** (Settings > Account type).
+2. developers.facebook.com > Create App (Business) > add **Instagram** product > *API setup with Instagram login*.
+3. Add the @hawa_taps_ account, generate a token with `instagram_business_basic` and `instagram_business_manage_messages`. Copy the token (`IG_TOKEN`) and account id (`IG_ID`). App secret is under App settings > Basic (`APP_SECRET`).
+4. Deploy (any host with HTTPS: Railway, Render, Fly, VPS):
+   `docker build -t hawa . && docker run -p 8080:8080 -v hawa-data:/data --env-file .env hawa`
+   Keep a persistent volume at `/data` so history survives restarts. Copy `.env.example` to `.env` and fill it.
+5. In Meta dashboard > Webhooks: callback URL `https://YOUR-HOST/`, verify token = `VERIFY_TOKEN`, subscribe to **messages**.
+6. Instagram app: Settings > Messages > allow access to connected tools. Send a DM from another account to test.
+7. Go live: Meta App Review for `instagram_business_manage_messages` is required before non-tester customers get replies (Advanced Access).
 
-## Where tokens get used (and how much)
-| Step | Tokens |
-|---|---|
-| FAQ match (most messages) | 0 |
-| Follow-up message (template) | 0 |
-| FAQ miss -> Haiku call | ~250-450 in + <=150 out |
+## Editing
+- Prices/addresses/warranty: `config.json`. Answers: `faq.json`. Restart after edits.
+- `past_shipment_cities`: only cities Ahmed bhai confirms; enables the "pehle bhi maal gaya" line.
 
-Grows with: `history_turns`, longer FAQ text sent as facts (only top-3 sent), `llm_max_output_tokens`, using a bigger model, and how often FAQ misses.
-Reduce: add more keywords to `faq.json`, lower `history_turns`, or set `"llm_enabled": false`.
+## Cost
+FAQ hits and onboarding cost 0 tokens. A fallback is roughly 250-450 input + <=150 output tokens. Set `llm_enabled:false` for pure FAQ.
+
+## Tests
+`python3 tests/test_bot.py` and `python3 tests/smoke.py`. Health check: `GET /health`.

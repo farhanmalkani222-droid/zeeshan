@@ -24,6 +24,17 @@ class Store:
             ON CONFLICT(uid) DO UPDATE SET {fu} last_ts=?, last_role=?""", (uid, now, role, now, role))
         self.db.commit()
 
+    def mark_bot_mid(self, mid):
+        if mid:
+            self.db.execute("INSERT OR IGNORE INTO seen VALUES(?)", ("bot:" + mid,)); self.db.commit()
+
+    def is_bot_mid(self, mid):
+        return self.db.execute("SELECT 1 FROM seen WHERE mid=?", ("bot:" + mid,)).fetchone() is not None
+
+    def bot_sent_since(self, uid, seconds):
+        return self.db.execute("SELECT COUNT(*) FROM msgs WHERE uid=? AND role='bot' AND ts>?",
+                               (uid, time.time() - seconds)).fetchone()[0]
+
     def user_message_count(self, uid):
         r = self.db.execute("SELECT COUNT(*) FROM msgs WHERE uid=? AND role='user'", (uid,)).fetchone()
         return r[0] if r else 0
