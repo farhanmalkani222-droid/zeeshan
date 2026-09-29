@@ -30,8 +30,8 @@ def cust(uid, mid, text=None, **kw):
     return {"sender": {"id": uid}, "recipient": {"id": "IG1"}, "message": dict({"mid": mid, **({"text": text} if text else {})}, **kw)}
 def to(uid): return [p["message"]["text"] for p in posts if p["recipient"]["id"] == uid]
 
-hook(cust("A", "m1", "Assalamu alaikum")); time.sleep(9)
-a = to("A"); assert len(a) == 4 and a[0].startswith("Walaikum") and "₹300" in a[0], a   # incl. one 500 -> retry
+hook(cust("A", "m1", "Assalamu alaikum")); time.sleep(4)
+a = to("A"); assert len(a) == 1 and a[0].startswith("Walaikum"), a   # incl. one 500 -> retry
 n = len(posts); hook(cust("A", "m1", "Assalamu alaikum")); time.sleep(1); assert len(posts) == n  # duplicate ignored
 
 hook({"sender": {"id": "IG1"}, "recipient": {"id": "A"}, "message": {"mid": "mid.bot1", "is_echo": True, "text": "x"}}); time.sleep(4)

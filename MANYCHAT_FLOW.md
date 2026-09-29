@@ -8,11 +8,13 @@ Sign up at manychat.com, choose Instagram, click "Connect Instagram" and log in 
 ## 2. Automation A: Salam (first greeting)
 - Trigger: DM contains any of `salam, assalam, assalamu, salaam, walaikum`.
 - Condition: if the message contains `walaikum`, opener is "Assalam-o-alaikum!". Otherwise "Walaikum-assalam!".
-- Send the 4 messages below in order, with a 2-second Delay block between them.
+- Send ONLY: `[opener] Hawa Taps mein aapka swagat hai. Nal ke baare mein aapko kya jaanna hai?` (do not send the 4 messages here).
 
-## 3. Automation B: Price or inquiry
-- Trigger keywords: `price, rate, kimat, keemat, kitne, kitna, cost, hi, hello, details, order, chahiye`.
-- Same 4 messages. Set it to run once per customer so it does not repeat.
+## 3. Automation B: General details request
+- Trigger keywords: `details, info, inquiry, enquiry, moq`.
+- Send the 4 messages below in order, with a 2-second Delay block between them. Run once per customer.
+- For `price, rate, kimat, keemat, kitne, kitna, cost` send only the price line: "Hamare taps ₹300 per tap hain. Kitne chahiye?"
+- Rule: answer only what the customer asked. Give full nal details only when they ask for them.
 
 ## The 4 messages
 1. `[Walaikum-assalam! / Assalam-o-alaikum!] Hawa Taps mein aapka swagat hai. Ek nal ki keemat ₹300 hai. Courier ke zariye All India delivery ho jaati hai, jahan chahiye wahan.`

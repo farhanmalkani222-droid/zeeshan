@@ -2,25 +2,26 @@
 import re
 _SALAM = re.compile(r"\bassalam|salaam|salam[\W_]?ale?ku?m|salam\b", re.I)
 _WALAIKUM = re.compile(r"\b(wa[\W_]?alai?kum|walaikum|walekum|walikum)", re.I)
-_ONBOARD = re.compile(
-    r"^\s*("
-    r"hi+|hello+|hey+|namaste|"
-    r"salaam|salam|assalam[\w\s\-o]*|walaikum[\w\s]*assalam|walaikum|walekum|"
-    r"price|rate|kimat|keemat|kitne|kitna|mrp|cost|inquiry|enquiry|info|"
-    r"details?|moq|minimum order|order|buy|lena|chahiye|available|stock"
-    r")\s*[\?\.! ]*\s*$",
-    re.I)
+_GREET = re.compile(r"^\s*(hi+|hello+|hey+|namaste|salaam|salam|assalam[\w\s\-o]*|walaikum[\w\s]*assalam|walaikum|walekum)"
+                    r"\s*[\?\.! ]*\s*$", re.I)
+_INTRO = re.compile(r"^\s*(details?|info|information|inquiry|enquiry|moq|minimum order|tap ke baare mein|nal ke baare mein)"
+                    r"\s*[\?\.! ]*\s*$", re.I)
 
 def opener(text):
     if _WALAIKUM.search(text): return "Assalam-o-alaikum!"
     if _SALAM.search(text):    return "Walaikum-assalam!"
     return "Assalam-o-alaikum!"
 
-def should_onboard(text, prior_user_count):
-    """Fire only on a customer's first substantive message (short, generic)."""
+def mode(text, prior_user_count):
+    """First contact only. 'greet' = bare salam/hi, 'intro' = customer asked for general details, else None."""
     if prior_user_count >= 1:
-        return False
-    return bool(_ONBOARD.match(text))
+        return None
+    if _GREET.match(text): return "greet"
+    if _INTRO.match(text): return "intro"
+    return None
+
+def greeting(cfg, text):
+    return [f"{opener(text)} {cfg['shop_name']} mein aapka swagat hai. Nal ke baare mein aapko kya jaanna hai?"]
 
 def messages(cfg, text):
     o = opener(text)

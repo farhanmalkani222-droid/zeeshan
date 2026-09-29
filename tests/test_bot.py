@@ -32,7 +32,7 @@ class T(unittest.TestCase):
     def test_strength(self):
         self.assertIn("70", ' '.join(self.b.reply("u1", "kitna mazboot hai?")))
     def test_onboard_four_messages(self):
-        msgs = self.b.reply("u1", "price?")
+        msgs = self.b.reply("u1", "details")
         self.assertEqual(len(msgs), 4)
         self.assertIn("₹300", msgs[0])
         self.assertIn("Nagpada", msgs[1]); self.assertIn("Taloja", msgs[1])
@@ -47,6 +47,12 @@ class T(unittest.TestCase):
     def test_onboard_only_on_first(self):
         self.b.reply("u1", "hi")
         self.assertEqual(len(self.b.reply("u1", "price?")), 1)
+    def test_greeting_only_greets(self):
+        m = self.b.reply("u1", "hi")
+        self.assertEqual(len(m), 1); self.assertNotIn("₹", m[0])
+    def test_price_answers_only_price(self):
+        m = self.b.reply("u1", "price?")
+        self.assertEqual(len(m), 1); self.assertIn("₹300", m[0]); self.assertNotIn("warranty", m[0].lower())
     def test_honest_about_bot(self):
         self.assertIn("automated", ' '.join(self.b.reply("u1", "are you a bot?")))
     def test_fallback_no_llm(self):

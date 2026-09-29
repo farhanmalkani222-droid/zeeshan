@@ -22,7 +22,10 @@ class Brain:
         self.store.add(uid, "user", text)
         if self.store.is_handoff(uid):
             return []
-        if onboard.should_onboard(text, prior_count):
+        first = onboard.mode(text, prior_count)
+        if first == "greet":
+            msgs = onboard.greeting(self.cfg, text)
+        elif first == "intro":
             msgs = onboard.messages(self.cfg, text)
         elif BOT_Q.search(text) and len(text.split()) <= 8:
             msgs = [self._fmt(HONEST)]

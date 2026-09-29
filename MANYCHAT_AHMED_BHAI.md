@@ -15,11 +15,13 @@ Ye tareeka Meta developer app ke bina chalta hai. Bas ManyChat pe Instagram jodn
 ## Step 3: Automation A, salam ka jawab
 - Trigger: customer ke message mein ye shabd ho: `salam, assalam, assalamu, salaam, walaikum`
 - Agar message mein `walaikum` hai toh shuru mein likho **"Assalam-o-alaikum!"**, warna **"Walaikum-assalam!"**
-- Neeche ke 4 message ek ke baad ek bhejo, har ek ke beech 2 second ka **Delay**.
+- Sirf ye bhejo: `[opener] Hawa Taps mein aapka swagat hai. Nal ke baare mein aapko kya jaanna hai?` (4 message yahan nahi bhejne).
 
-## Step 4: Automation B, price ya inquiry
-- Trigger shabd: `price, rate, kimat, keemat, kitne, kitna, cost, hi, hello, details, order, chahiye`
-- Yahi 4 message bhejo. Setting rakho ki ye har customer ko sirf ek baar chale.
+## Step 4: Automation B, jab customer poori jaankari maange
+- Trigger shabd: `details, info, inquiry, enquiry, moq`
+- Tab hi ye 4 message bhejo (har customer ko sirf ek baar).
+- `price, rate, kimat, kitne, kitna` par sirf price bhejo: Hamare taps ₹300 per tap hain. Kitne chahiye?
+- Rule: customer jo poochhe sirf wahi batao. Nal ki poori jaankari tabhi do jab wo maange.
 
 ## Ye 4 message copy-paste karo
 **Message 1:**

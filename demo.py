@@ -10,6 +10,7 @@ entries = faq.load(f"{HERE}/faq.json")
 
 SCENES = [
     ("New customer says salam", [("cust", "Assalamu alaikum")]),
+    ("Customer wants general details", [("cust", "details")]),
     ("Customer asks price and size", [("cust", "bhai ye kitne ka hai?"), ("cust", "naal ka size kya hai?")]),
     ("Customer asks about quality and warranty", [("cust", "kitna mazboot hai?"), ("cust", "warranty milti hai?")]),
     ("Customer asks if it is a bot", [("cust", "are you a bot?")]),
