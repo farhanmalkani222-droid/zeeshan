@@ -6,7 +6,6 @@
       "keywords": [
         "price",
         "kitne ka",
-        "kitna",
         "rate",
         "cost",
         "kimat",
@@ -18,14 +17,15 @@
     {
       "id": "product",
       "keywords": [
-        "kya hai",
         "details",
         "detail",
         "material",
         "quality",
         "brass",
         "steel",
-        "kaisa"
+        "product",
+        "tap kaisa",
+        "kaisa tap"
       ],
       "answer": "Ye premium quality ke taps hain, long-lasting finish ke saath. Aap kaunsa use (kitchen/bathroom) dekh rahe hain?"
     },
