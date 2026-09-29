@@ -28,6 +28,7 @@ def answer(text, entries, cfg, threshold=1):
     r = ranked(text, entries)
     if not r or r[0][0] < threshold:
         return None, r
-    a = r[0][1]["answer"].format(shop_name=cfg["shop_name"], origin=cfg["origin"],
-                                 city_line=city_line(text, cfg))
+    origin = cfg.get("origin") or f"Iske baare mein {cfg['owner_name']} confirm karke batayenge."
+    a = r[0][1]["answer"].format(shop_name=cfg["shop_name"], origin=origin, price=cfg["price"],
+                                 shop_location=cfg["shop_location"], city_line=city_line(text, cfg))
     return a, r

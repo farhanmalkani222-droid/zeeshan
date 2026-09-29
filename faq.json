@@ -1,21 +1,108 @@
 {
-  "_note": "SAMPLE data. Ahmed bhai/Faisal sir se asli price, jawab aur details bharwayein. {city_line} & {origin} config se aate hain.",
+  "_note": "Price/location asli hain (Hawa Taps). Baaki jawab SAMPLE hain, Ahmed bhai se confirm karein.",
   "entries": [
-    {"id": "price", "keywords": ["price", "kitne ka", "kitna", "rate", "cost", "kimat", "keemat", "how much"],
-     "answer": "Hamare taps ₹350 se shuru hote hain. Kaunsa model chahiye? Photo/model bata dein toh exact rate bata deta hoon."},
-    {"id": "product", "keywords": ["kya hai", "details", "detail", "material", "quality", "brass", "steel", "kaisa"],
-     "answer": "Ye premium quality ke taps hain, long-lasting finish ke saath. Aap kaunsa use (kitchen/bathroom) dekh rahe hain?"},
-    {"id": "origin", "keywords": ["kahan se", "factory", "kaha ka", "made in", "origin", "kaun si company", "manufacture"],
-     "answer": "{origin}"},
-    {"id": "delivery", "keywords": ["delivery", "deliver", "kitne din", "shipping", "kab tak", "courier", "ship"],
-     "answer": "Delivery aapke area ke hisaab se 2-5 din mein ho jaati hai. {city_line}Apna pincode bhej dein, confirm kar deta hoon."},
-    {"id": "cod", "keywords": ["cod", "cash on delivery", "payment", "upi", "advance", "pay"],
-     "answer": "Payment UPI se ho jaata hai. COD ke liye bata dein, hum check karke confirm karte hain."},
-    {"id": "warranty", "keywords": ["warranty", "guarantee", "return", "replace", "exchange", "kharab"],
-     "answer": "Product pe warranty/replacement ki policy hai. Kaunsa model hai bata dein, details share karta hoon."},
-    {"id": "order", "keywords": ["order", "book", "buy", "lena hai", "chahiye", "kaise le"],
-     "answer": "Bahut badhiya! Order ke liye apna naam, pura address aur pincode bhej dein, baaki hum sambhal lenge."},
-    {"id": "greeting", "keywords": ["hi", "hello", "hey", "salam", "assalam", "namaste", "hii"],
-     "answer": "Hello! {shop_name} mein aapka swagat hai. Kaunsa product ya kya jaanna chahte hain?"}
+    {
+      "id": "price",
+      "keywords": [
+        "price",
+        "kitne ka",
+        "kitna",
+        "rate",
+        "cost",
+        "kimat",
+        "keemat",
+        "how much"
+      ],
+      "answer": "Hamare taps ₹{price} per tap hain. Kitne chahiye? Bata dein toh order note kar leta hoon."
+    },
+    {
+      "id": "product",
+      "keywords": [
+        "kya hai",
+        "details",
+        "detail",
+        "material",
+        "quality",
+        "brass",
+        "steel",
+        "kaisa"
+      ],
+      "answer": "Ye premium quality ke taps hain, long-lasting finish ke saath. Aap kaunsa use (kitchen/bathroom) dekh rahe hain?"
+    },
+    {
+      "id": "origin",
+      "keywords": [
+        "kahan se",
+        "factory",
+        "kaha ka",
+        "made in",
+        "origin",
+        "kaun si company",
+        "manufacture"
+      ],
+      "answer": "{origin}"
+    },
+    {
+      "id": "delivery",
+      "keywords": [
+        "delivery",
+        "deliver",
+        "kitne din",
+        "shipping",
+        "kab tak",
+        "courier",
+        "ship"
+      ],
+      "answer": "Hum {shop_location} se bhejte hain. {city_line}Apna pincode bhej dein, delivery time confirm kar deta hoon."
+    },
+    {
+      "id": "cod",
+      "keywords": [
+        "cod",
+        "cash on delivery",
+        "payment",
+        "upi",
+        "advance",
+        "pay"
+      ],
+      "answer": "Payment UPI se ho jaata hai. COD ke liye bata dein, hum check karke confirm karte hain."
+    },
+    {
+      "id": "warranty",
+      "keywords": [
+        "warranty",
+        "guarantee",
+        "return",
+        "replace",
+        "exchange",
+        "kharab"
+      ],
+      "answer": "Product pe warranty/replacement ki policy hai. Kaunsa model hai bata dein, details share karta hoon."
+    },
+    {
+      "id": "order",
+      "keywords": [
+        "order",
+        "book",
+        "buy",
+        "lena hai",
+        "chahiye",
+        "kaise le"
+      ],
+      "answer": "Bahut badhiya! Kitne taps chahiye, apna naam, pura address aur pincode bhej dein. Hum {shop_location} se bhej denge."
+    },
+    {
+      "id": "greeting",
+      "keywords": [
+        "hi",
+        "hello",
+        "hey",
+        "salam",
+        "assalam",
+        "namaste",
+        "hii"
+      ],
+      "answer": "Hello! {shop_name} mein aapka swagat hai. Kaunsa product ya kya jaanna chahte hain?"
+    }
   ]
 }

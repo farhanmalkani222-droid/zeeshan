@@ -1,14 +1,25 @@
 {
-  "shop_name": "Ahmed Taps",
+  "shop_name": "Hawa Taps",
   "owner_name": "Ahmed bhai",
   "product": "taps",
-  "served_cities": ["mira road", "bhayandar", "mira bhayandar", "mumbai", "thane"],
-  "origin": "TODO: Faisal sir se confirm karke likhein (factory / jagah jahan se maal aata hai)",
+  "served_cities": [
+    "nagpada",
+    "mumbai",
+    "mira road",
+    "bhayandar",
+    "mira bhayandar",
+    "thane"
+  ],
+  "origin": "",
   "followup_after_hours": 3,
   "followup_max": 1,
   "llm_enabled": true,
   "llm_model": "claude-haiku-4-5-20251001",
   "llm_max_output_tokens": 150,
   "history_turns": 4,
-  "match_threshold": 1
+  "match_threshold": 1,
+  "instagram_handle": "hawa_taps_",
+  "shop_location": "Nagpada, Mumbai",
+  "price": "300",
+  "_origin_note": "origin khaali hai: bot 'confirm karenge' bolega. Faisal sir se factory/jagah lekar yahan likhein."
 }
