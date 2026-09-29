@@ -39,6 +39,7 @@ Test ke waqt dusra account app mein **Roles > Instagram Testers** mein add hona 
 
 ## Step 7: Sabke liye live karo
 Bina App Review ke bot sirf tester accounts ko reply karta hai. Live karne ke liye:
+0. Privacy policy ka link: `https://aapka-link/privacy` (bot khud dikhata hai). Meta ke form mein yahi daalna.
 1. Meta dashboard > **App Review > Permissions and Features**.
 2. `instagram_business_manage_messages` ke liye **Request advanced access** karo. Privacy policy ka link aur ek chhoti screen recording maangte hain (DM aane par bot ka reply dikhao).
 3. Approval mein kuch din lag sakte hain. Phir app ko **Live** mode mein daalo.

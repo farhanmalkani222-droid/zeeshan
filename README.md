@@ -18,7 +18,8 @@ Replies to DMs on @hawa_taps_ through Meta's **official** Instagram Messaging AP
    Keep a persistent volume at `/data` so history survives restarts. Copy `.env.example` to `.env` and fill it.
 5. In Meta dashboard > Webhooks: callback URL `https://YOUR-HOST/`, verify token = `VERIFY_TOKEN`, subscribe to **messages**.
 6. Instagram app: Settings > Messages > allow access to connected tools. Send a DM from another account to test.
-7. Go live: Meta App Review for `instagram_business_manage_messages` is required before non-tester customers get replies (Advanced Access).
+7. Privacy policy URL for App Review: `https://YOUR-HOST/privacy` (served from `privacy.html`; edit if details change).
+8. Go live: Meta App Review for `instagram_business_manage_messages` is required before non-tester customers get replies (Advanced Access).
 
 ## Editing
 - Prices/addresses/warranty: `config.json`. Answers: `faq.json`. Restart after edits.

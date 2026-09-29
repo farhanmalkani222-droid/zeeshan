@@ -92,6 +92,10 @@ class H(BaseHTTPRequestHandler):
 
     def do_GET(self):
         u = urlparse(self.path)
+        if u.path == "/privacy":
+            page = open(os.path.join(HERE, "privacy.html"), "rb").read()
+            self.send_response(200); self.send_header("Content-Type", "text/html; charset=utf-8"); self.end_headers()
+            self.wfile.write(page); return
         if u.path == "/health":
             self.send_response(200); self.end_headers(); self.wfile.write(b"ok"); return
         q = parse_qs(u.query)  # Meta webhook verification
