@@ -92,6 +92,47 @@
       "answer": "Bahut badhiya! Kitne taps chahiye, apna naam, pura address aur pincode bhej dein. Courier se aapke paas bhej denge."
     },
     {
+      "id": "size",
+      "keywords": [
+        "size",
+        "kitna size",
+        "naal ka size",
+        "inch",
+        "kitne inch",
+        "naap"
+      ],
+      "answer": "Naal half inch size ka hai."
+    },
+    {
+      "id": "material",
+      "keywords": [
+        "material",
+        "kis cheez ka",
+        "kaunsa material",
+        "body kis",
+        "plastic",
+        "abs",
+        "button ka material",
+        "banawat"
+      ],
+      "answer": "Body ABS material ki hai, jo saade plastic se 10 guna zyada mazboot hai. Humne 70kg ka aadmi naal pe khada kar diya, tab bhi naal nahi toota. Button aluminium ka hai. Alhamdulillah quality mein koi problem nahi aayegi."
+    },
+    {
+      "id": "strength",
+      "keywords": [
+        "mazboot",
+        "majboot",
+        "strong",
+        "tootega",
+        "tough",
+        "durable",
+        "load",
+        "weight",
+        "kitna weight"
+      ],
+      "answer": "Bahut mazboot hai — humne 70kg ka aadmi naal pe khada kar diya tab bhi nahi toota. Body ABS (saade plastic se 10x mazboot) aur button aluminium ka hai."
+    },
+    {
       "id": "greeting",
       "keywords": [
         "hi",

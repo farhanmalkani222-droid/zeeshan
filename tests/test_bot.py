@@ -24,6 +24,13 @@ class T(unittest.TestCase):
         c2 = dict(cfg, past_shipment_cities=["mira road"])
         b2 = Brain(c2, entries, Store(tempfile.mktemp()))
         self.assertIn("Mira Road mein humara maal pehle bhi", b2.reply("u1", "Mira Road delivery hoti hai?"))
+    def test_size(self):
+        self.assertIn("half inch", self.b.reply("u1", "naal ka size kya hai?").lower())
+    def test_material(self):
+        r = self.b.reply("u1", "material kya hai?")
+        self.assertIn("ABS", r); self.assertIn("aluminium", r.lower())
+    def test_strength(self):
+        self.assertIn("70", self.b.reply("u1", "kitna mazboot hai?"))
     def test_honest_about_bot(self):
         self.assertIn("automated", self.b.reply("u1", "are you a bot?"))
     def test_fallback_no_llm(self):
