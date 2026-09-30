@@ -1,0 +1,33 @@
+{
+  "shop_name": "Hawa Taps",
+  "owner_name": "Ahmed bhai",
+  "product": "taps",
+  "served_cities": [
+    "all over India"
+  ],
+  "origin": "Hamara maal Taloja MIDC factory area se aata hai.",
+  "followup_after_hours": 3,
+  "followup_max": 1,
+  "human_typing": true,
+  "typing_min_sec": 0.8,
+  "typing_max_sec": 3.5,
+  "typing_per_char_sec": 0.03,
+  "llm_enabled": true,
+  "llm_model": "claude-haiku-4-5-20251001",
+  "llm_max_output_tokens": 250,
+  "history_turns": 4,
+  "match_threshold": 1,
+  "instagram_handle": "hawa_taps_",
+  "shop_location": "Nagpada, Mumbai",
+  "price": "300",
+  "shipping": "Courier ke through All India delivery, jahan chahiye wahan.",
+  "past_shipment_cities": [],
+  "_past_shipment_note": "Sirf wahi shehar likhein jahan sach mein maal ja chuka hai (jaise 'mira road'). Bot tabhi zikr karega jab customer us shehar ka naam le.",
+  "head_office": "Nagpada, Mumbai",
+  "factory": "Taloja, Mumbai",
+  "water_saving": "70-80% paani bachate hain, ek nal roz kam-se-kam 60 litre paani bachata hai",
+  "customers": "All India: 50,000+ masjids, 30,000+ madarson, aur 1,000+ schools/colleges/hospitals ko supply karte hain",
+  "warranty": "1 saal warranty. Uske baad bhi kuch hua toh kharab nal Ahmad bhai tak bhej dena, badle mein naya nal free of cost mil jayega inshallah.",
+  "price_compare": "Isse chhote models hamare Amazon pe ₹350 aur ₹400 mein bikte hain, ye wale ki keemat ₹300 per nal hai.",
+  "chat_mode": true
+}
