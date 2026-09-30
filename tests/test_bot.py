@@ -109,6 +109,29 @@ class T(unittest.TestCase):
         b = Brain(cfg, entries, Store(tempfile.mktemp()), on_lead=lambda *a: fired.append(a))
         b.reply("u1", "5 nal chahiye"); b.reply("u1", "Ali, Mumbai, 400001")
         self.assertTrue(fired and fired[-1][0] == "order" and fired[-1][3] == "400001")
+    def test_unanswered_question_saved(self):
+        self.b.reply("u1", "xyzzy plugh kya aap gold plated tap banate ho")
+        q = self.b.store.unanswered()
+        self.assertEqual(len(q), 1); self.assertIn("gold plated", q[0][2])
+    def test_answered_question_not_saved(self):
+        self.b.reply("u1", "price?"); self.assertEqual(self.b.store.unanswered(), [])
+    def test_llm_unsure_is_saved(self):
+        from bot import llm
+        old = llm.ask; llm.ask = lambda *a, **k: "UNSURE"
+        try:
+            c2 = dict(cfg, chat_mode=True)
+            b2 = Brain(c2, entries, Store(tempfile.mktemp()))
+            r = ' '.join(b2.reply("u1", "kya ye tap NASA approved hai?"))
+            self.assertIn("confirm", r); self.assertEqual(len(b2.store.unanswered()), 1)
+        finally: llm.ask = old
+    def test_chat_mode_llm_answer_used(self):
+        from bot import llm
+        old = llm.ask; llm.ask = lambda *a, **k: "Ji bilkul, bata dijiye."
+        try:
+            b2 = Brain(dict(cfg, chat_mode=True), entries, Store(tempfile.mktemp()))
+            self.assertIn("Ji bilkul", ' '.join(b2.reply("u1", "mujhe masjid ke liye advice chahiye")))
+            self.assertEqual(b2.store.unanswered(), [])
+        finally: llm.ask = old
     def test_fallback_no_llm(self):
         self.assertIn("confirm", ' '.join(self.b.reply("u1", "xyzzy plugh")))
     def test_handoff_silences(self):

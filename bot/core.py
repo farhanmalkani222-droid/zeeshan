@@ -61,9 +61,17 @@ class Brain:
             msgs = [QUOTE.format(n=n, total=n * int(self.cfg["price"]), price=self.cfg["price"])]
         else:
             out, ranked = faq.answer(text, self.entries, self.cfg, self.cfg["match_threshold"])
-            if out is None:
-                hist = self.store.history(uid, self.cfg["history_turns"])
-                out = llm.ask(self.cfg, [e for _, e in ranked], hist, text) or self._fmt(FALLBACK)
+            hist = self.store.history(uid, self.cfg["history_turns"])
+            if self.cfg.get("chat_mode"):  # ChatGPT-style: LLM converses freely, grounded on ALL FAQ facts
+                allq = [(1, e) for e in self.entries]
+                llm_out = llm.ask(self.cfg, [e for _, e in allq], hist, text)
+                out = llm_out if llm_out and llm_out.strip() != llm.UNSURE else (out if llm_out is None else None)
+            elif out is None:
+                llm_out = llm.ask(self.cfg, [e for _, e in ranked], hist, text)
+                out = llm_out if llm_out and llm_out.strip() != llm.UNSURE else None
+            if out is None:  # couldn't answer -> save for Ahmed bhai to review, tell customer he'll confirm
+                self.store.add_unanswered(uid, text, "no_answer")
+                out = self._fmt(FALLBACK)
             msgs = [out]
         # Flagship human touch: if the customer names a city Ahmed bhai has really shipped to,
         # open with "yahan pehle bhi maal gaya hai" — once per chat, so it never repeats robotically.

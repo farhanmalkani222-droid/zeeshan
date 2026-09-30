@@ -4,8 +4,8 @@ Replies to DMs on @hawa_taps_ through Meta's **official** Instagram Messaging AP
 
 ## How it replies
 1. First greeting/inquiry -> 4 short messages (price + delivery, locations, warranty, material + Amazon comparison), ending with a "kitne nal chahiye?" call to action.
-2. Everything else -> `faq.json` keyword match (0 tokens).
-3. No match -> one Claude Haiku call (<=150 output tokens, shopkeeper persona), else "Ahmed bhai confirm karke batayenge".
+2. Everything else -> **ChatGPT-style chat** (`chat_mode: true`): Claude talks freely in Hinglish, grounded on every FAQ answer + config facts, so customers can ask anything naturally. `chat_mode:false` = old cheap mode (FAQ first, LLM only on a miss). No API key -> FAQ only.
+3. Can't answer (LLM says UNSURE, or no FAQ match and no LLM) -> customer gets "Ahmed bhai confirm karke batayenge" and the question is **saved**. Review them with `python3 unanswered.py` (`--csv` to export, `--done ID` when handled, then add the answer to `faq.json`).
 4. Customer silent 3h -> one follow-up (quote-aware if a quantity was discussed). Ahmed bhai types manually -> bot goes quiet for that customer.
 5. Photos/voice notes -> polite "Ahmed bhai dekhenge". Safety cap: 40 bot messages/customer/hour.
 

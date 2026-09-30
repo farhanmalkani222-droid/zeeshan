@@ -14,7 +14,7 @@
   "typing_per_char_sec": 0.03,
   "llm_enabled": true,
   "llm_model": "claude-haiku-4-5-20251001",
-  "llm_max_output_tokens": 150,
+  "llm_max_output_tokens": 250,
   "history_turns": 4,
   "match_threshold": 1,
   "instagram_handle": "hawa_taps_",
@@ -28,5 +28,6 @@
   "water_saving": "70-80% paani bachate hain, ek nal roz kam-se-kam 60 litre paani bachata hai",
   "customers": "All India: 50,000+ masjids, 30,000+ madarson, aur 1,000+ schools/colleges/hospitals ko supply karte hain",
   "warranty": "1 saal warranty. Uske baad bhi kuch hua toh kharab nal Ahmad bhai tak bhej dena, badle mein naya nal free of cost mil jayega inshallah.",
-  "price_compare": "Isse chhote models hamare Amazon pe ₹350 aur ₹400 mein bikte hain, ye wale ki keemat ₹300 per nal hai."
+  "price_compare": "Isse chhote models hamare Amazon pe ₹350 aur ₹400 mein bikte hain, ye wale ki keemat ₹300 per nal hai.",
+  "chat_mode": true
 }

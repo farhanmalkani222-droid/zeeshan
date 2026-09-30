@@ -7,13 +7,17 @@ SYSTEM = ("You reply to Instagram DMs for {shop}, a {product} seller. Talk like 
           "no bullet points, no corporate tone. Reply in the customer's language (Hinglish/Hindi/English). "
           "Use ONLY the facts given below; if unsure, say {owner} will confirm shortly. Never invent prices, "
           "locations, past orders or origin. Never claim to be a human; if directly asked, say you're {shop}'s "
-          "automated assistant.\nFacts:\n{facts}")
+          "automated assistant. You may chat naturally about anything related to the customer's needs (taps, water saving, "
+          "delivery, ordering, small talk) like a helpful assistant. If the answer is not in the Facts or you would have "
+          "to guess, reply with exactly UNSURE and nothing else.\nFacts:\n{facts}")
+
+UNSURE = "UNSURE"
 
 def ask(cfg, top_entries, history, user_text):
     key = os.environ.get("ANTHROPIC_API_KEY")
     if not key or not cfg.get("llm_enabled"):
         return None
-    facts = "\n".join(f"- {e['answer']}" for e in top_entries[:3]) or "- (no matching FAQ)"
+    facts = "\n".join(f"- {e['answer']}" for e in top_entries[:(len(top_entries) if cfg.get("chat_mode") else 3)]) or "- (no matching FAQ)"
     facts += f"\n- Price: Rs {cfg['price']} per tap\n- Shop: {cfg['shop_location']}\n- Delivery: {cfg['shipping']}"
     if cfg.get("origin"):
         facts += f"\n- Origin: {cfg['origin']}"

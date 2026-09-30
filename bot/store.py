@@ -9,7 +9,8 @@ class Store:
         CREATE TABLE IF NOT EXISTS conv(uid TEXT PRIMARY KEY, last_ts REAL, last_role TEXT,
                                         followups INTEGER DEFAULT 0, handoff INTEGER DEFAULT 0);
         CREATE TABLE IF NOT EXISTS seen(mid TEXT PRIMARY KEY);
-        CREATE TABLE IF NOT EXISTS leads(uid TEXT, status TEXT, qty INTEGER, pincode TEXT, phone TEXT, details TEXT, ts REAL);""")
+        CREATE TABLE IF NOT EXISTS leads(uid TEXT, status TEXT, qty INTEGER, pincode TEXT, phone TEXT, details TEXT, ts REAL);
+        CREATE TABLE IF NOT EXISTS unanswered(id INTEGER PRIMARY KEY AUTOINCREMENT, uid TEXT, question TEXT, reason TEXT, ts REAL, resolved INTEGER DEFAULT 0);""")
         for col, ddl in (("rapport", "rapport INTEGER DEFAULT 0"), ("last_user_ts", "last_user_ts REAL")):
             try:  # migrate older DBs in place
                 self.db.execute(f"ALTER TABLE conv ADD COLUMN {ddl}"); self.db.commit()
@@ -52,6 +53,17 @@ class Store:
     def leads(self, status=None):
         q = "SELECT uid,status,qty,pincode,phone,details,ts FROM leads" + (" WHERE status=?" if status else "") + " ORDER BY ts"
         return self.db.execute(q, (status,) if status else ()).fetchall()
+
+    def add_unanswered(self, uid, question, reason):
+        self.db.execute("INSERT INTO unanswered(uid,question,reason,ts) VALUES(?,?,?,?)", (uid, question, reason, time.time()))
+        self.db.commit()
+
+    def unanswered(self, include_resolved=False):
+        q = "SELECT id, uid, question, reason, ts, resolved FROM unanswered" + ("" if include_resolved else " WHERE resolved=0") + " ORDER BY ts"
+        return self.db.execute(q).fetchall()
+
+    def resolve_unanswered(self, qid):
+        self.db.execute("UPDATE unanswered SET resolved=1 WHERE id=?", (qid,)); self.db.commit()
 
     def user_message_count(self, uid):
         r = self.db.execute("SELECT COUNT(*) FROM msgs WHERE uid=? AND role='user'", (uid,)).fetchone()
