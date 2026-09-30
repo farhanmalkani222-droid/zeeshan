@@ -10,6 +10,11 @@ class Store:
                                         followups INTEGER DEFAULT 0, handoff INTEGER DEFAULT 0);
         CREATE TABLE IF NOT EXISTS seen(mid TEXT PRIMARY KEY);
         CREATE TABLE IF NOT EXISTS leads(uid TEXT, status TEXT, qty INTEGER, pincode TEXT, phone TEXT, details TEXT, ts REAL);""")
+        for col, ddl in (("rapport", "rapport INTEGER DEFAULT 0"), ("last_user_ts", "last_user_ts REAL")):
+            try:  # migrate older DBs in place
+                self.db.execute(f"ALTER TABLE conv ADD COLUMN {ddl}"); self.db.commit()
+            except sqlite3.OperationalError:
+                pass  # column already exists
 
     def seen(self, mid):
         try:
@@ -20,9 +25,13 @@ class Store:
     def add(self, uid, role, text):
         now = time.time()
         self.db.execute("INSERT INTO msgs VALUES(?,?,?,?)", (uid, role, text, now))
-        fu = "followups=0," if role == "user" else ""
-        self.db.execute(f"""INSERT INTO conv(uid,last_ts,last_role) VALUES(?,?,?)
-            ON CONFLICT(uid) DO UPDATE SET {fu} last_ts=?, last_role=?""", (uid, now, role, now, role))
+        if role == "user":  # reset follow-up count and stamp the customer's last inbound time (24h-window anchor)
+            self.db.execute("""INSERT INTO conv(uid,last_ts,last_role,last_user_ts,followups) VALUES(?,?,?,?,0)
+                ON CONFLICT(uid) DO UPDATE SET last_ts=?, last_role=?, last_user_ts=?, followups=0""",
+                (uid, now, role, now, now, role, now))
+        else:
+            self.db.execute("""INSERT INTO conv(uid,last_ts,last_role) VALUES(?,?,?)
+                ON CONFLICT(uid) DO UPDATE SET last_ts=?, last_role=?""", (uid, now, role, now, role))
         self.db.commit()
 
     def mark_bot_mid(self, mid):
@@ -52,6 +61,13 @@ class Store:
         rows = self.db.execute("SELECT role,text FROM msgs WHERE uid=? ORDER BY ts DESC LIMIT ?", (uid, n)).fetchall()
         return rows[::-1]
 
+    def rapport_sent(self, uid):
+        r = self.db.execute("SELECT rapport FROM conv WHERE uid=?", (uid,)).fetchone()
+        return bool(r and r[0])
+
+    def mark_rapport(self, uid):
+        self.db.execute("UPDATE conv SET rapport=1 WHERE uid=?", (uid,)); self.db.commit()
+
     def set_handoff(self, uid, v=1):
         self.db.execute("UPDATE conv SET handoff=? WHERE uid=?", (v, uid)); self.db.commit()
 
@@ -60,11 +76,13 @@ class Store:
         return bool(r and r[0])
 
     def due_followups(self, after_h, max_n):
-        """Bot spoke last, customer silent >after_h, still inside Meta's 24h window."""
+        """Bot spoke last, customer silent >after_h, and still inside Meta's 24h window measured from the
+        customer's OWN last message (not the bot's) — sending outside that window is a real policy/flag risk."""
         now = time.time()
         return [r[0] for r in self.db.execute(
             """SELECT uid FROM conv WHERE last_role='bot' AND handoff=0 AND followups<?
-               AND last_ts<? AND last_ts>?""", (max_n, now - after_h * 3600, now - 23 * 3600))]
+               AND last_ts<? AND last_user_ts IS NOT NULL AND last_user_ts>?""",
+            (max_n, now - after_h * 3600, now - 24 * 3600))]
 
     def mark_followup(self, uid):
         self.db.execute("UPDATE conv SET followups=followups+1,last_ts=? WHERE uid=?", (time.time(), uid))

@@ -22,6 +22,28 @@ MAX_BOT_MSGS_PER_HOUR = 40
 _locks = defaultdict(threading.Lock)
 ALLOWED = {u.strip() for u in os.environ.get("ALLOWED_USER_IDS", "").split(",") if u.strip()}  # test mode: reply only to these
 
+# Human feel: mark the DM "Seen" and show a typing bubble, then pause a bit before each reply.
+# Uses the OFFICIAL Instagram sender_action API (allowed, no ban risk). Set HUMAN_TYPING=0 to disable.
+HUMAN_TYPING = cfg.get("human_typing", True) and os.environ.get("HUMAN_TYPING", "1") != "0"
+TYPE_MIN = float(cfg.get("typing_min_sec", 0.8))       # shortest pause (short reply)
+TYPE_MAX = float(cfg.get("typing_max_sec", 3.5))       # longest pause (long reply), speed doesn't matter to the owner
+TYPE_PER_CHAR = float(cfg.get("typing_per_char_sec", 0.03))
+
+def typing_delay(text):
+    """A human-looking pause: longer for longer messages, capped so it never feels slow."""
+    return min(TYPE_MAX, TYPE_MIN + len(text) * TYPE_PER_CHAR)
+
+def action(uid, name):
+    """Best-effort sender_action ('mark_seen' / 'typing_on'). Never blocks or fails the real reply."""
+    url = f"{GRAPH_BASE}/{os.environ['IG_ID']}/messages"
+    body = json.dumps({"recipient": {"id": uid}, "sender_action": name}).encode()
+    req = urllib.request.Request(url, body, {"Authorization": f"Bearer {os.environ['IG_TOKEN']}",
+                                             "Content-Type": "application/json"})
+    try:
+        urllib.request.urlopen(req, timeout=10).read()
+    except Exception as e:
+        log.debug("sender_action %s failed for %s: %s", name, uid, e)
+
 def send(uid, text):
     """Official Send API with retry/backoff. Returns Meta's message id."""
     url = f"{GRAPH_BASE}/{os.environ['IG_ID']}/messages"
@@ -42,6 +64,26 @@ def send(uid, text):
             log.warning("send retry %d: %s", attempt + 1, e)
         time.sleep(2 ** attempt)
     log.error("send gave up for %s", uid)
+
+def _do_notify(kind, uid, n, pin, ph, blob):
+    """Best-effort real-time alert to the owner when a hot lead/order comes in. Runs off the reply path."""
+    summary = (f"Naya {kind}! Instagram user {uid}\nQty: {n or '?'}  Pincode: {pin or '?'}  Phone: {ph or '?'}\n"
+               f"Chat: {blob[:300]}")
+    url = os.environ.get("NOTIFY_URL")  # Telegram bot / webhook / email relay — the robust channel
+    if url:
+        payload = json.dumps({"text": summary, "kind": kind, "uid": uid, "qty": n, "pincode": pin, "phone": ph}).encode()
+        try:
+            urllib.request.urlopen(urllib.request.Request(url, payload, {"Content-Type": "application/json"}), timeout=10).read()
+        except Exception as e:
+            log.warning("NOTIFY_URL failed: %s", e)
+    oid = os.environ.get("OWNER_IG_ID")  # only works if the owner DM'd the app in the last 24h; NOTIFY_URL is preferred
+    if oid and os.environ.get("IG_TOKEN") and os.environ.get("IG_ID"):
+        send(oid, summary)
+
+def notify_owner(kind, uid, n, pin, ph, blob):
+    threading.Thread(target=_do_notify, args=(kind, uid, n, pin, ph, blob), daemon=True).start()
+
+brain.on_lead = notify_owner
 
 def handle_event(ev):
     m = ev.get("message")
@@ -70,8 +112,14 @@ def handle_event(ev):
             return
         if msgs and brain.store.bot_sent_since(uid, 3600) > MAX_BOT_MSGS_PER_HOUR:
             log.warning("rate cap hit for %s; staying silent", uid); return
+        if msgs and HUMAN_TYPING:
+            action(uid, "mark_seen")  # customer sees "Seen", like a person just read it
         for i, msg in enumerate(msgs):
-            if i: time.sleep(1.2)
+            if HUMAN_TYPING:
+                action(uid, "typing_on")     # typing bubble
+                time.sleep(typing_delay(msg))
+            elif i:
+                time.sleep(1.2)
             send(uid, msg)
 
 def handle(payload):
@@ -87,7 +135,7 @@ def followup_loop():
         time.sleep(600)
         try:
             for uid in brain.store.due_followups(cfg["followup_after_hours"], cfg["followup_max"]):
-                if send(uid, brain.followup_text()):
+                if send(uid, brain.followup_text(uid)):
                     brain.store.mark_followup(uid)
         except Exception:
             log.exception("followup loop error")

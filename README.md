@@ -3,16 +3,22 @@
 Replies to DMs on @hawa_taps_ through Meta's **official** Instagram Messaging API (no scraping, no unofficial login).
 
 ## How it replies
-1. First greeting/inquiry -> 4 short messages (price + delivery, locations, warranty, material + Amazon comparison).
+1. First greeting/inquiry -> 4 short messages (price + delivery, locations, warranty, material + Amazon comparison), ending with a "kitne nal chahiye?" call to action.
 2. Everything else -> `faq.json` keyword match (0 tokens).
-3. No match -> one Claude Haiku call (<=150 output tokens), else "Ahmed bhai confirm karke batayenge".
-4. Customer silent 3h -> one follow-up. Ahmed bhai types manually -> bot goes quiet for that customer.
+3. No match -> one Claude Haiku call (<=150 output tokens, shopkeeper persona), else "Ahmed bhai confirm karke batayenge".
+4. Customer silent 3h -> one follow-up (quote-aware if a quantity was discussed). Ahmed bhai types manually -> bot goes quiet for that customer.
 5. Photos/voice notes -> polite "Ahmed bhai dekhenge". Safety cap: 40 bot messages/customer/hour.
+
+## Human feel (official API, no ban risk)
+- Marks the DM **Seen** and shows a **typing** bubble, then pauses a bit before each reply (longer message = longer pause). Via Meta's official `sender_action` API. Tune in `config.json` (`human_typing`, `typing_*`) or set `HUMAN_TYPING=0`.
+- Names a city rapport line ("Mira Road mein humara maal pehle bhi ja chuka hai") the first time a customer mentions a genuinely-shipped-to city — once per chat, never repeated. Cities come only from `past_shipment_cities` that Ahmed bhai confirms.
+- Only reveals it's an automated assistant when *directly* asked "are you a bot/real person?" — product words like "automatic" or "machine" don't trigger it.
 
 ## Extra powers
 - Typo-tolerant matching (kimmat, warrenty, mazbut all work) and two questions in one message get both answers.
-- Customer says a quantity ("10 taps chahiye") -> bot quotes the total (10 x price) and asks for name, address, pincode.
-- Customer sends pincode or phone -> order saved. See buyers with `python3 orders.py` (or `--csv`).
+- Customer says a quantity ("10 taps chahiye") -> bot quotes the total (10 x price) and asks for name, address, pincode and WhatsApp number.
+- Order is confirmed only once a **pincode** is given (shippable); a bare phone number gets a "please also send address + pincode" instead of a false confirmation. Confirmation echoes the quantity and total.
+- New orders can alert Ahmed bhai in real time: set `NOTIFY_URL` (Telegram/webhook/email relay) and/or `OWNER_IG_ID`. Otherwise see buyers with `python3 orders.py` (or `--csv`).
 - Try the bot in the terminal: `python3 chat.py`.
 
 ## No Meta app? ManyChat mode
@@ -43,4 +49,4 @@ See `MANYCHAT_BRAIN.md`: ManyChat handles the Instagram connection, our bot answ
 FAQ hits and onboarding cost 0 tokens. A fallback is roughly 250-450 input + <=150 output tokens. Set `llm_enabled:false` for pure FAQ.
 
 ## Tests
-`python3 tests/test_bot.py` and `python3 tests/smoke.py`. Health check: `GET /health`.
+`python3 tests/test_bot.py` (30 unit tests), `python3 tests/smoke.py`, `python3 tests/e2e_mock.py`, `python3 tests/typing_test.py`, `python3 tests/manychat_test.py`, `python3 tests/allowlist_test.py`. Health check: `GET /health`.

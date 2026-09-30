@@ -38,5 +38,5 @@ def answer(text, entries, cfg, threshold=1):
     origin = cfg.get("origin") or f"Iske baare mein {cfg['owner_name']} confirm karke batayenge."
     top = [e for sc, e in r if sc == r[0][0] and e["id"] not in ("greeting", "order")][:2] or [r[0][1]]
     fmt = lambda e: e["answer"].format(shop_name=cfg["shop_name"], origin=origin, price=cfg["price"],
-                                       shop_location=cfg["shop_location"], city_line=city_line(text, cfg))
+                                       shop_location=cfg["shop_location"])
     return " ".join(fmt(e) for e in top), r

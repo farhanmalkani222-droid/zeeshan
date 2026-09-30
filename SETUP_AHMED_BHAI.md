@@ -1,6 +1,8 @@
 # Ahmed bhai ke liye setup guide (Hawa Taps Instagram bot)
 
-Ye bot Instagram ke official system se kaam karta hai, isliye account ban hone ka khatra nahi hai.
+Ye bot Meta ke **official** Instagram API se kaam karta hai, isliye ban ka sabse bada khatra — unofficial automation aur fake login — bilkul khatam ho jaata hai. Bot sirf unhi logon ko reply karta hai jo pehle aapko message karte hain, aur poochhne par saaf bolta hai ki "main automated assistant hoon" (yahi Meta ke rules ke hisaab se safe hai — ise hatana mat).
+
+**Account safe rakhne ke liye:** followers/likes kabhi mat khareedo, jhoothe claim mat karo, aur khud kisi ko bina uske message kiye cold DM mat bhejo. Bot ye sab pehle se avoid karta hai.
 
 ## Step 1: Instagram account Business banao
 1. Instagram app kholo > Profile > Settings > **Account type and tools**.
@@ -46,11 +48,14 @@ Bina App Review ke bot sirf tester accounts ko reply karta hai. Live karne ke li
 
 ## Roz ka istemal
 - **Aap khud reply karo** toh bot us customer ke liye chup ho jaata hai. Bas Instagram app se normal reply kar do.
-- Customer 3 ghante chup rahe toh bot ek baar follow-up bhejta hai.
+- Customer 3 ghante chup rahe toh bot ek baar follow-up bhejta hai. Agar usne quantity poochi thi toh follow-up mein wahi total yaad dilata hai ("aapne 50 nal ka poocha tha…").
+- Bot reply se pehle message ko "Seen" karta hai aur typing bubble dikhata hai, phir jawab bhejta hai — insaani feel ke liye. (Band karna ho toh env mein `HUMAN_TYPING=0`.)
+- Jab customer apna pincode/number de deta hai toh order note ho jaata hai. Turant alert paane ke liye env mein `NOTIFY_URL` (Telegram bot / webhook / email relay) daal do — har naye order ki summary wahan aa jaayegi. Warna `python3 orders.py` se dekh lo.
 - Photo ya voice note aaye toh bot bolta hai "Ahmed bhai dekh kar reply karenge". Us par aap khud reply karo.
 - Jawab, daam ya address badalna ho toh `config.json` aur `faq.json` badlo, phir bot restart karo.
 
 ## Aap se ye chahiye
-- Kin shehron mein pehle maal ja chuka hai (rapport line ke liye).
+- **Kin shehron mein sach mein maal ja chuka hai** — bot sirf wahi city bolega jahan aap confirm karo ("Mira Road mein pehle bhi maal gaya hai" wali line). `config.json` ke `past_shipment_cities` mein daalna hai. Jhoothi city mat daalna — customer ko galat lage toh report kar sakta hai.
+- Go-live se pehle `config.json` ke `customers` aur FAQ ke `saving` wale numbers confirm/theek kar lo — jo bhi bot bole, wo aap sach-much keh sako.
 - COD hai ya nahi, delivery kitne din mein.
 - 15-20 asli chat ke sample, taaki bot ka andaaz bilkul aapke jaisa ho.

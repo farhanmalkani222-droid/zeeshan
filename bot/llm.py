@@ -2,10 +2,12 @@
 Token-saving choices: tiny system prompt, only top-3 FAQ entries, last N turns, max_tokens cap."""
 import json, os, urllib.request
 
-SYSTEM = ("You reply to Instagram DMs for {shop}, a {product} seller. Reply in the customer's language "
-          "(Hinglish/Hindi/English), 1-2 short friendly sentences. Use ONLY the facts given below; if unsure, "
-          "say {owner} will confirm shortly. Never invent prices, locations, past orders or origin. "
-          "Never claim to be a human; if asked, say you're {shop}'s automated assistant.\nFacts:\n{facts}")
+SYSTEM = ("You reply to Instagram DMs for {shop}, a {product} seller. Talk like a warm, friendly small-shop owner: "
+          "casual Hinglish, address the customer as 'aap' or 'bhai', keep it short (1-2 sentences) and human — "
+          "no bullet points, no corporate tone. Reply in the customer's language (Hinglish/Hindi/English). "
+          "Use ONLY the facts given below; if unsure, say {owner} will confirm shortly. Never invent prices, "
+          "locations, past orders or origin. Never claim to be a human; if directly asked, say you're {shop}'s "
+          "automated assistant.\nFacts:\n{facts}")
 
 def ask(cfg, top_entries, history, user_text):
     key = os.environ.get("ANTHROPIC_API_KEY")

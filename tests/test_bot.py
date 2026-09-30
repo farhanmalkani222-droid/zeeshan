@@ -24,6 +24,15 @@ class T(unittest.TestCase):
         c2 = dict(cfg, past_shipment_cities=["mira road"])
         b2 = Brain(c2, entries, Store(tempfile.mktemp()))
         self.assertIn("Mira Road mein humara maal pehle bhi", ' '.join(b2.reply("u1", "Mira Road delivery hoti hai?")))
+    def test_rapport_fires_on_any_question_not_just_delivery(self):
+        c2 = dict(cfg, past_shipment_cities=["mira road"])
+        b2 = Brain(c2, entries, Store(tempfile.mktemp()))
+        self.assertIn("pehle bhi", ' '.join(b2.reply("u1", "Mira Road se hoon, price kya hai?")))
+    def test_rapport_only_once_per_chat(self):
+        c2 = dict(cfg, past_shipment_cities=["mira road"])
+        b2 = Brain(c2, entries, Store(tempfile.mktemp()))
+        self.assertIn("pehle bhi", ' '.join(b2.reply("u1", "Mira Road delivery?")))
+        self.assertNotIn("pehle bhi", ' '.join(b2.reply("u1", "Mira Road warranty milti hai?")))  # not repeated
     def test_size(self):
         self.assertIn("half inch", ' '.join(self.b.reply("u1", "naal ka size kya hai?")).lower())
     def test_material(self):
@@ -71,6 +80,35 @@ class T(unittest.TestCase):
         self.assertEqual((lead[2], lead[3], lead[4]), (50, "421302", "9876543210"))
     def test_honest_about_bot(self):
         self.assertIn("automated", ' '.join(self.b.reply("u1", "are you a bot?")))
+    def test_honest_about_bot_hinglish(self):
+        self.assertIn("automated", ' '.join(self.b.reply("u1", "tum insaan ho ya robot?")))
+    def test_product_words_do_not_trigger_bot_disclosure(self):
+        # "automatic"/"machine" are product talk, not identity questions
+        self.assertNotIn("automated", ' '.join(self.b.reply("u1", "ye automatic tap hai kya?")))
+        self.assertNotIn("automated", ' '.join(self.b.reply("u2", "machine se banta hai kya?")))
+    def test_phone_only_asks_for_address_not_confirm(self):
+        self.b.reply("u1", "10 nal chahiye")
+        r = ' '.join(self.b.reply("u1", "mera number 9876543210"))
+        self.assertIn("pincode", r.lower()); self.assertNotIn("order note", r)
+        self.assertEqual(self.b.store.leads("order"), [])  # not confirmed yet
+    def test_order_confirmed_with_total_when_pincode_arrives(self):
+        self.b.reply("u1", "10 nal chahiye"); self.b.reply("u1", "9876543210")
+        r = ' '.join(self.b.reply("u1", "Ali Khan, Bhiwandi 421302"))
+        self.assertIn("order note", r); self.assertIn("₹3000", r)
+        lead = self.b.store.leads("order")[0]
+        self.assertEqual((lead[2], lead[3], lead[4]), (10, "421302", "9876543210"))
+    def test_quote_aware_followup(self):
+        self.b.reply("u1", "20 nal chahiye")
+        r = self.b.followup_text("u1")
+        self.assertIn("20 nal", r); self.assertIn("₹6000", r)
+    def test_generic_followup_without_quote(self):
+        self.b.reply("u1", "hello")
+        self.assertNotIn("nal ka poocha", self.b.followup_text("u1"))
+    def test_owner_alerted_on_order(self):
+        fired = []
+        b = Brain(cfg, entries, Store(tempfile.mktemp()), on_lead=lambda *a: fired.append(a))
+        b.reply("u1", "5 nal chahiye"); b.reply("u1", "Ali, Mumbai, 400001")
+        self.assertTrue(fired and fired[-1][0] == "order" and fired[-1][3] == "400001")
     def test_fallback_no_llm(self):
         self.assertIn("confirm", ' '.join(self.b.reply("u1", "xyzzy plugh")))
     def test_handoff_silences(self):

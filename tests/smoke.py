@@ -1,6 +1,6 @@
 """End-to-end: real HTTP server, signed webhook POST, Instagram send mocked."""
 import hashlib, hmac, json, os, sys, threading, time, urllib.request
-os.environ.update(VERIFY_TOKEN="vt", APP_SECRET="sec", IG_TOKEN="t", IG_ID="1", PORT="8099")
+os.environ.update(VERIFY_TOKEN="vt", APP_SECRET="sec", IG_TOKEN="t", IG_ID="1", PORT="8099", HUMAN_TYPING="0")
 os.environ.pop("ANTHROPIC_API_KEY", None)
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 import app

@@ -2,7 +2,7 @@
 import hashlib, hmac, json, os, sys, tempfile, threading, time, urllib.request
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 os.environ.update(VERIFY_TOKEN="vt", APP_SECRET="sec", IG_TOKEN="tok", IG_ID="IG1",
-                  GRAPH_BASE="http://localhost:8097", DB_PATH=tempfile.mktemp())
+                  GRAPH_BASE="http://localhost:8097", DB_PATH=tempfile.mktemp(), HUMAN_TYPING="0")
 os.environ.pop("ANTHROPIC_API_KEY", None)
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 

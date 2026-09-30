@@ -32,5 +32,6 @@ def messages(cfg, text):
           f"Maal courier ke zariye aap tak aa jaayega.")
     m3 = f"Nal pe {cfg['warranty']}"
     m4 = (f"Nal ABS material ka bana hai — saade plastic se 10 guna zyada mazboot, aur button aluminium ka hai, "
-          f"toh tootne ki koi shikayat nahi. {cfg['price_compare']}")
+          f"toh tootne ki koi shikayat nahi. {cfg['price_compare']} "
+          f"Aapko kitne nal chahiye? Bata dein toh order note kar leta hoon.")
     return [m1, m2, m3, m4]
