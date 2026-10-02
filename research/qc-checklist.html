@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Mill QC Trial Checklist</title>
+<style>
+  @page { size: A4 portrait; margin: 9mm 10mm; }
+  * { box-sizing: border-box; }
+  html,body { margin:0; padding:0; }
+  body { font-family: Arial, Helvetica, sans-serif; color:#111; font-size:8.2pt; line-height:1.28; }
+  h1 { font-size:14pt; margin:0; letter-spacing:-.2px; }
+  .sub { font-size:7.6pt; color:#444; margin:1px 0 0; }
+  .band { background:#15433a; color:#fff; padding:5px 8px; border-radius:4px; display:flex; justify-content:space-between; align-items:flex-end; }
+  .band .r { text-align:right; font-size:7.2pt; color:#cfe3dd; }
+  .meta { display:flex; gap:6px; margin:6px 0; }
+  .meta .f { flex:1; border:1px solid #bbb; border-radius:3px; padding:3px 5px; }
+  .meta .lbl { font-size:6.6pt; text-transform:uppercase; letter-spacing:.4px; color:#666; }
+  .meta .ln { height:11px; border-bottom:1px dotted #999; }
+  h2 { font-size:8.6pt; margin:8px 0 3px; padding:2px 6px; background:#e7efec; border-left:3px solid #15433a; border-radius:2px; text-transform:uppercase; letter-spacing:.3px; }
+  .grid2 { display:grid; grid-template-columns:1fr 1fr; gap:7px; }
+  table { width:100%; border-collapse:collapse; }
+  th,td { border:1px solid #c9c9c9; padding:2px 4px; text-align:left; vertical-align:top; }
+  th { background:#f1f1f1; font-size:6.9pt; text-transform:uppercase; letter-spacing:.2px; }
+  td.c,th.c { text-align:center; }
+  .fill { background:#fffdf0; }
+  .chk { font-size:9pt; }
+  .pass { color:#15433a; font-weight:bold; }
+  .note { font-size:7pt; color:#555; border:1px dashed #bbb; border-radius:3px; padding:4px 6px; margin-top:6px; }
+  .note b { color:#9a3412; }
+  .foot { margin-top:6px; font-size:6.6pt; color:#777; display:flex; justify-content:space-between; }
+  ul { margin:2px 0 0 0; padding-left:14px; }
+  li { margin-bottom:1px; }
+  .tight td { padding:1.5px 4px; }
+  .small { font-size:6.8pt; color:#555; }
+</style>
+</head>
+<body>
+
+  <div class="band">
+    <div>
+      <h1>Mill QC Trial Checklist</h1>
+      <p class="sub">India long-fibre blend vs US imported-fibre benchmark — prove BF · RCT · colour · smell · runnability · cost</p>
+    </div>
+    <div class="r">Grade under test: ____ BF<br>Rev 2026-10 · page 1/1</div>
+  </div>
+
+  <div class="meta">
+    <div class="f"><div class="lbl">Mill / Machine</div><div class="ln"></div></div>
+    <div class="f"><div class="lbl">Date</div><div class="ln"></div></div>
+    <div class="f"><div class="lbl">Operator</div><div class="ln"></div></div>
+    <div class="f"><div class="lbl">Target GSM</div><div class="ln"></div></div>
+  </div>
+
+  <div class="grid2">
+    <div>
+      <h2>1 · Prep &amp; sourcing (tick when in hand)</h2>
+      <table class="tight">
+        <tr><th style="width:18px" class="c">✓</th><th>Material</th><th>Indicative ₹ (confirm by quote)</th></tr>
+        <tr><td class="c chk">☐</td><td>Domestic OCC (box scrap)</td><td>₹14–23/kg</td></tr>
+        <tr><td class="c chk">☐</td><td>Jute mill waste / old gunny (NOT raw jute)</td><td>gunny scrap ~₹15–17/pc</td></tr>
+        <tr><td class="c chk">☐</td><td>Domestic kraft trim / DLK</td><td>₹18–24/kg</td></tr>
+        <tr><td class="c chk">☐</td><td>Bagasse (depithed)</td><td>₹1.4–2.2/kg</td></tr>
+        <tr><td class="c chk">☐</td><td>Bamboo unbleached pulp (premium)</td><td>₹58–62/kg</td></tr>
+        <tr><td class="c chk">☐</td><td>Cationic starch</td><td>₹45–70/kg</td></tr>
+        <tr><td class="c chk">☐</td><td>GPAM + dry-strength resin/PVAm (trial kit)</td><td>quote</td></tr>
+        <tr><td class="c chk">☐</td><td>Refiner enzyme (cellulase blend)</td><td>quote</td></tr>
+      </table>
+      <div class="small" style="margin-top:3px">Suppliers: starch — Gujarat Ambuja / Sukhjit / Roquette · GPAM/DSR — Anmol Polymers, UP Alums, Solenis/Kemira/Ecolab/Buckman · enzyme — Advanced Enzyme Technologies, Novonesis.</div>
+    </div>
+
+    <div>
+      <h2>2 · Blend recipe (% of oven-dry furnish)</h2>
+      <table class="tight">
+        <tr><th>Component</th><th class="c">T1<br>drop-in</th><th class="c">T2<br>+bamboo</th><th class="c fill">T3<br>tune</th></tr>
+        <tr><td>Domestic OCC</td><td class="c">70</td><td class="c">60</td><td class="c fill"></td></tr>
+        <tr><td>Imported fibre</td><td class="c pass">0</td><td class="c pass">0</td><td class="c fill">0</td></tr>
+        <tr><td>Bagasse</td><td class="c">–</td><td class="c">10</td><td class="c fill"></td></tr>
+        <tr><td>Jute waste / gunny</td><td class="c">15</td><td class="c">10</td><td class="c fill"></td></tr>
+        <tr><td>Domestic kraft trim</td><td class="c">15</td><td class="c">10</td><td class="c fill"></td></tr>
+        <tr><td>Bamboo pulp</td><td class="c">–</td><td class="c">10</td><td class="c fill"></td></tr>
+        <tr><td>Cationic starch</td><td class="c">1.0%</td><td class="c">1.0%</td><td class="c fill"></td></tr>
+        <tr><td>GPAM</td><td class="c">0.2%</td><td class="c">0.2%</td><td class="c fill"></td></tr>
+        <tr><td>Dry-strength resin/PVAm</td><td class="c">0.3%</td><td class="c">0.3%</td><td class="c fill"></td></tr>
+        <tr><td>Enzyme (at refiner)</td><td class="c">0.3kg/t</td><td class="c">0.3kg/t</td><td class="c fill"></td></tr>
+      </table>
+      <div class="small" style="margin-top:3px">If a target is missed: starch 0.5–1.5% · GPAM 0.1–0.3% · resin 0.2–0.5% · enzyme 0.1–0.5 kg/t · long-fibre 10→25%.</div>
+    </div>
+  </div>
+
+  <h2>3 · Tests &amp; pass targets vs control</h2>
+  <table class="tight">
+    <tr><th>Property</th><th>Method</th><th>Instrument</th><th>PASS target (vs control)</th><th class="c" style="width:34px">T1 ✓/✗</th><th class="c" style="width:34px">T2 ✓/✗</th><th class="c fill" style="width:34px">T3 ✓/✗</th></tr>
+    <tr><td>GSM</td><td>ISO 536</td><td>Balance</td><td>Grade ±2%</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td><b>BF (Burst Factor)</b></td><td>IS 1060 / ISO 2758 / T403</td><td>Mullen burst</td><td class="pass">Within ±1 BF point</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td><b>RCT (Ring Crush)</b></td><td>ISO 12192 / TAPPI T822</td><td>Ring-crush</td><td class="pass">≥ 95% of control</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td>CMT (if fluting)</td><td>ISO 7263 / T809</td><td>Crush tester</td><td>≥ 95% of control</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td>Cobb (water abs.)</td><td>ISO 535</td><td>Cobb tester</td><td>Within ±10%</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td><b>Colour / shade</b></td><td>ΔE or light-box</td><td>Spectro / daylight</td><td class="pass">Visually matched</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td><b>Smell</b></td><td>5-person blind panel, fresh + 24h bagged</td><td>—</td><td class="pass">Neutral / no off-odour</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td>Moisture</td><td>ISO 287</td><td>Oven / meter</td><td>Within spec</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td><b>Runnability</b></td><td>Drainage °SR/CSF, breaks, speed</td><td>Machine DCS</td><td class="pass">Speed ≥ 95%, no new breaks</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+  </table>
+
+  <h2>4 · Result &amp; cost</h2>
+  <table class="tight">
+    <tr><th>Record</th><th class="c">CONTROL</th><th class="c">T1</th><th class="c">T2</th><th class="c fill">T3</th></tr>
+    <tr><td>BF / RCT (N)</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td>Colour / Smell (Y-N)</td><td class="c">ref / ref</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td>Machine speed</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td>Furnish ₹/tonne <span class="small">= Σ(% × ₹/kg × 10) + chemistry</span></td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+    <tr><td>% imports used</td><td class="c fill"></td><td class="c pass">0%</td><td class="c pass">0%</td><td class="c pass fill">0%</td></tr>
+    <tr><td><b>₹ saved / tonne</b></td><td class="c">—</td><td class="c fill"></td><td class="c fill"></td><td class="c fill"></td></tr>
+  </table>
+
+  <div class="note"><b>DECISION RULE:</b> the cheapest blend that PASSES <b>all</b> of BF, RCT, colour, smell and runnability is the product. &nbsp; <b>Watch-items:</b> jute/gunny &amp; agro can affect <b>smell</b> and <b>drainage</b> — those two lines decide acceptance as much as strength. &nbsp; All ₹ figures are indicative public-listing ranges (India 2025) — <b>confirm every price by quotation.</b> &nbsp; Bamboo is legal (not a "tree" since the 2017 Forest Act amendment).</div>
+
+  <div class="foot">
+    <span>Sign-off: Lab ______________  ·  Production ______________  ·  Date __________</span>
+    <span>Full protocol: research/mill-trial-protocol.md</span>
+  </div>
+
+</body>
+</html>
