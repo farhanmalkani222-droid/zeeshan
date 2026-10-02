@@ -155,6 +155,21 @@ Rated against Speaker 1's eight constraints (fits trading model ✅ / needs plan
 
 **The point:** the best blend uses **Gujarat-local recovered kraft (sacks/trim) + local cotton waste** — no pulping, no long-distance freight, pure trading — with chemistry/enzyme to stretch it. At the **customer mill there is never a machine change**; they add your baled local blend exactly where the US waste went.
 
+#### Chemical & enzyme options (the cheapest lever — and Gujarat-sourceable)
+Chemistry is the lowest-logistics part: small doses, dropped in at the existing wet-end/refiner, no machine change. It **raises BF strongly and RCT partly**, so it lets a *small* local long-fibre share replace a *big* imported share.
+
+| Additive | What it does | BF | RCT | Typical dose | India / Gujarat supplier |
+|---|---|---|---|---|---|
+| **Cationic starch** | Inter-fibre bonding (the base) | ↑↑ | ↑ | 0.5–1.5% (5–15 kg/t) | **Gujarat Ambuja Exports (Ahmedabad)**, Sukhjit, Roquette India |
+| **GPAM** (glyoxalated polyacrylamide) | Dry-strength; strong **synergy with starch on ring-crush** | ↑↑ | ↑↑ | 0.1–0.3% | Anmol Polymers, UP Alums, Solenis/Kemira/Ecolab/Buckman; **Gujarat resin cluster (Vapi/Vadodara)** |
+| **PVAm** (polyvinylamine) | Best synthetic dry-strength for **compression/RCT** | ↑ | ↑↑↑ | 0.2–0.5% | BASF/Solenis |
+| **Dry-strength resin** (amphoteric/anionic PAM) | General strength | ↑↑ | ↑ | 0.2–0.5% | UP Alums, Gujarat resin makers |
+| **CMC** (carboxymethyl cellulose) | Bonding co-additive | ↑ | ↑ | small | widely available |
+| **Refiner enzyme** (cellulase/hemicellulase) | More strength per fibre, better drainage, **less starch**, higher speed | ↑ | ↑ | 0.1–0.5 kg/t | **Maps Enzymes (Ahmedabad — India's largest enzyme maker)**, Advanced Enzyme Technologies (Thane), Novonesis |
+| **MFC / nano-cellulose** | Big strength boost | ↑↑ | ↑↑ | 2–5% | *Future tier — ~$8–25/kg, too costly now* |
+
+**Honest limit:** no chemistry gives **full RCT with zero long fibre** — compression ultimately needs fibre stiffness/network. Chemistry + enzyme can get you the **lower-mid grades (≈18–22 BF) from mostly domestic OCC**, and for **28 BF+** you still add a *small* share of local long fibre (sacks/cotton). The best RCT-per-rupee recipe = **cationic starch + GPAM (+ PVAm for RCT-critical grades) + refiner enzyme**, which typically costs **~₹1–3 per kg of paper** — far cheaper than the imported fibre it displaces.
+
 **Net:** the India solution is a **formulated, warehouse-stocked, daily-priced long-fibre blend** — jute/gunny + domestic kraft trim + bamboo (premium) + strength chemistry — that holds BF/RCT and lands at **roughly half the imported-fibre system cost**, with zero USA import, zero shipment lock-in, and no machine change. Everything below (6.1–6.4) is how to package, price, and sell it.
 
 ### 6.1 Product: "India-Strength Kit" (a stocked program, not a mystery raw material)
