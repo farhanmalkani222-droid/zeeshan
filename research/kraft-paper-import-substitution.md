@@ -116,7 +116,16 @@ Rated against Speaker 1's eight constraints (fits trading model ✅ / needs plan
 - **Global chemical majors already sell "reduce-your-fibre" dry-strength programs:** **Solenis** (incl. BASF paper chemicals, Biobond program), **Kemira**, **Ecolab/Nalco**, **Buckman**, **Ashland/Archroma**. Solenis/BASF have Indian sites (e.g., Ankleshwar, Gujarat). Their published case histories show dry-strength programs cutting fibre cost and raising compression — exactly this problem.
 - **Enzyme suppliers** (e.g., Novozymes/Novonesis-type cellulase blends, "Pergalase"-class products) have **mill-trial results** on OCC: higher CMT, faster machines, less starch.
 - **Indian R&D:** **ICAR-CIRCOT, Mumbai** has evaluated **MFC/NFC from cotton linters** as a strength additive in unbleached kraft; **NITI Aayog** has pushed **bamboo for pulp** as a softwood-import substitute. Mills like **JK Paper, ITC** use bamboo/wood in the south/east.
+- **Indian companies already doing domestic-fibre substitution (as integrated mills, not as input suppliers):**
+  - **Yash Pakka** (Ayodhya) — converts ~75,000 t/yr of **bagasse** into pulp, packaging paper and the CHUK compostable-tableware brand.
+  - **Ruchira Papers** — agro-residue (wheat straw, bagasse, rice husk) packaging grades, cutting wood dependence.
+  - **KR Papers** — bagasse + agro-fibre kraft/packaging for 30+ years.
+  - **NatureWrks Technologies** (IIT-Madras spin-off) and **Amazon × IIT-Roorkee** — farm-waste packaging R&D (commercial target ~2027).
+  - **Bamboo:** NITI Aayog push, KFRI–OBDA MoU (Nov 2025), and many **bamboo pulp-plant DPRs/feasibility studies** (20,000–40,000 MT) — mostly *proposed manufacturing plants*, not yet a traded fibre product.
+  - **Enzymes:** a few Indian mills already use enzymes (mainly in bleaching; some pre-refining strength) — adoption exists but is partial.
+- **So the IDEA is not new — but the MODEL looks open.** Everyone above is either an **integrated mill making its own paper** from domestic fibre, or a **chemical major selling to large mills**. **Nobody appears to sell a stocked, drop-in *domestic long-fibre + strength-chemistry blend* to the many small recycled-kraft mills, per-tonne gain-share, no machine change.** That "arms-dealer to the small kraft mills" slot is the gap.
 - **The gap (your opening):** the big players chase **large integrated mills**. The **thousands of small/mid recycled-kraft mills** (16–28 BF, Gujarat/Morbi/Vapi, UP-Muzaffarnagar, Punjab) are **price-sensitive, under-serviced, and lack in-house technical teams.** They buy imported fibre by habit, not because chemistry was ever properly productised and *stocked locally* for them. **No one owns "the simple, warehoused, per-tonne-priced strength kit + service for small kraft mills."** That is a defensible niche.
+- **Caveat:** absence of public evidence ≠ nobody is doing it privately. Before scaling, **scout directly** — ask 5–10 mills what they already buy, ask the chemical/enzyme suppliers who else trials this, and check for any local trader already blending domestic fibre.
 
 ---
 
