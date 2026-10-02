@@ -124,6 +124,29 @@ Rated against Speaker 1's eight constraints (fits trading model ✅ / needs plan
 
 > This is Speaker 2's **hybrid** turned into a product: a **cheap Indian recycled base + added strength inputs + a partial domestic long-fibre stream** = fewer imports, no machine change, stocked and priced daily from a warehouse.
 
+### 6.0 THE committed India answer — a 100%-domestic long-fibre blend (no USA)
+**The brief, restated:** no USA import; an India material/recipe that matches what the US raw material delivers (**long fibre → RCT**, not just burst) and cuts **~50% of the cost** of the US take.
+
+**Where the 50% actually comes from — read this first.** The US material is *recovered waste paper* (DSOCC/DLK) at **~₹25–30/kg landed** — cheap because it's recycled; it just carries long virgin fibre. No single India fibre is half of *that* on a like-for-like tonne (virgin **bamboo pulp ≈ $660–700/t ≈ ₹58/kg**, cheaper than imported virgin softwood pulp at $1,100–1,200/t, but still dearer than imported *waste*). **The 50% is won on the blended cost of hitting the same BF + RCT**, not on one cheaper fibre. You replace expensive imported waste in the recipe with a cheap Indian base + a *small* share of domestic long fibre, and let chemistry multiply the strength so less long fibre is needed.
+
+**The committed recipe (all India, dropped in where US waste went, no machine change):**
+| Layer | India source | Role | Indicative cost |
+|---|---|---|---|
+| **Base (60–70%)** | Domestic OCC + agro residue (bagasse / wheat straw) | Bulk furnish | ₹10–15/kg |
+| **Long-fibre reinforcement (15–25%)** | **Jute waste / recovered gunny sacks**, **domestic kraft trim/DLK** from Indian box plants, **bamboo** (premium) | Delivers **RCT** — the thing imports are bought for | ₹8–22/kg |
+| **Strength multiplier** | **GPAM + PVAm/DSR + cationic starch + refiner enzyme** | Raises strength per unit fibre → need less long fibre | +₹1–2.5 per kg *paper* |
+| **= Blended furnish** | — | Same BF/RCT, India-only | **₹12–18/kg vs ₹25–30/kg imported → ~40–50% cut** |
+
+**Why this genuinely matches the US fibre (not just a cost trick):**
+- **Jute** is a long, strong bast fibre; Indian research documents jute pulp as a **reinforcing fibre that can replace long-fibre bamboo and imported softwood**. Recovered **gunny/jute-sack waste and jute-mill caddis** are cheap and abundant (West Bengal/Assam) and can be repulped in the mill's **existing hydrapulper**, like any waste — *potentially a true drop-in, no new plant* (validate cutting/cleaning on trial).
+- **Bamboo** gives 2–3 mm fibre ≈ softwood → full RCT, and is the **legal unlock**: since the **Indian Forest (Amendment) Act, 2017**, bamboo grown on **non-forest land is no longer a "tree"** — no felling/transit permit, freely cultivable and tradeable, and actively promoted (National Bamboo Mission). So it sidesteps the "wood pulp is prohibited" problem entirely. Buy it as market pulp or **toll-pulp** it; don't build a mill on day one.
+- **Domestic kraft trim/DLK** from Indian box plants that already ran imported fibre *is* imported-grade long fibre — domestic, no sea freight, buy-low/sell.
+- **Chemistry + enzyme** are "raw materials you add" at the existing wet-end/refiner — they let the small long-fibre share do the work of a big imported share.
+
+**The one honest catch & how to keep it trading-friendly:** bamboo needs pulping. Don't build a mill — **(a) buy existing Indian bamboo/agro market pulp, (b) toll/contract-pulp to your spec, or (c)** lead with the **drop-in waste fibres (jute/gunny + domestic kraft trim)** that need no pulping at all, and add bamboo only for premium high-BF grades. At the **customer mill there is never a machine change** — they add your baled India blend exactly where the US waste went.
+
+**Net:** the India solution is a **formulated, warehouse-stocked, daily-priced long-fibre blend** — jute/gunny + domestic kraft trim + bamboo (premium) + strength chemistry — that holds BF/RCT and lands at **roughly half the imported-fibre system cost**, with zero USA import, zero shipment lock-in, and no machine change. Everything below (6.1–6.4) is how to package, price, and sell it.
+
 ### 6.1 Product: "India-Strength Kit" (a stocked program, not a mystery raw material)
 A standardised, warehouse-stocked bundle a mill drops in **without touching machines**:
 1. **Base:** cationic/modified **starch** (already used — you optimise dose).
@@ -211,6 +234,10 @@ Aggregate and sell **cleaner, longer-fibre domestic streams** — converter/box-
 - NITI Aayog — bamboo for pulp & paper: https://www.niti.gov.in/sites/default/files/2023-08/Technical_Session_3_Bamboo_for_Pulp_and_Paper_Shri_Sanjeev_Jain.pdf
 - BioResources (ICAR-CIRCOT) — MFC/NFC cotton linters as kraft strength additive: https://bioresources.cnr.ncsu.edu/wp-content/uploads/2017/06/BioRes_12_3_5682_Bharimalla_DPV_NFC_Cotton_Linters_Strength_Additive_Kraft_Paper_11725.pdf
 - IPMA — Indian Paper Manufacturers Association: https://ipmaindia.org/
+- PIB — Indian Forest (Amendment) Ordinance 2017, bamboo exempted from "tree": https://pib.gov.in/newsite/PrintRelease.aspx?relid=173782
+- IPPTA — Economics of bamboo vs hardwood pulping: https://ippta.co/wp-content/uploads/2021/01/IPPTA-191-1-5-Economics-of-Bamboo.pdf
+- IPPTA — Jute as reinforcing pulp to replace long-fibre bamboo / imported softwood: https://ippta.co/wp-content/uploads/2021/01/IPPTA-XII2-134-137-Can-we-Use-Jute.pdf
+- IndexBox — bamboo pulp price in India (2025): https://www.indexbox.io/search/pulp-of-bamboo-price-india/
 
 ---
 
