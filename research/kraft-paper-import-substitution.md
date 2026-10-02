@@ -170,6 +170,17 @@ Chemistry is the lowest-logistics part: small doses, dropped in at the existing 
 
 **Honest limit:** no chemistry gives **full RCT with zero long fibre** — compression ultimately needs fibre stiffness/network. Chemistry + enzyme can get you the **lower-mid grades (≈18–22 BF) from mostly domestic OCC**, and for **28 BF+** you still add a *small* share of local long fibre (sacks/cotton). The best RCT-per-rupee recipe = **cationic starch + GPAM (+ PVAm for RCT-critical grades) + refiner enzyme**, which typically costs **~₹1–3 per kg of paper** — far cheaper than the imported fibre it displaces.
 
+#### Delivering the SAME LEVEL as the US import (grade it, don't just collect it)
+The requirement is a domestic raw material **equal in level to what the USA ships in.** The good news: **used cement/chemical/food kraft sacks are made from sack kraft = virgin softwood long fibre — the same fibre class as imported DLK/DSOCC.** Collected in India, they are **not a compromise; they are the same grade of fibre.** The US import only *feels* superior because it arrives **graded and consistent** (OCC-11, DLK, DSOCC specs); loose Indian waste varies lot to lot. So the gap is **grading & consistency, not the fibre.**
+
+To match the import level every time, **productize — don't just collect:**
+1. **Sort & grade** the recovered kraft-sack/trim stream to a written spec (fibre source, cleanliness, moisture, BF/RCT contribution).
+2. **Bale to a defined grade** — create your own "India-DLK, Grade A," the way imported bales carry grades.
+3. **QC every lot** against that spec sheet so each delivery performs identically — like a graded imported bale.
+4. **Blend + chemistry** fine-tunes to the mill's exact finished grade (BF/RCT/colour/smell).
+
+**This grading + lot-by-lot QC is the core value-add and the moat** — you become the brand guaranteeing "same level as import, made in India." For **18–32 BF** (the bulk of the market) a well-graded domestic kraft-sack blend can match the import level; for **40–45 BF** the highest virgin fibre still helps, so the trial confirms how far it reaches.
+
 **Net:** the India solution is a **formulated, warehouse-stocked, daily-priced long-fibre blend** — jute/gunny + domestic kraft trim + bamboo (premium) + strength chemistry — that holds BF/RCT and lands at **roughly half the imported-fibre system cost**, with zero USA import, zero shipment lock-in, and no machine change. Everything below (6.1–6.4) is how to package, price, and sell it.
 
 ### 6.1 Product: "India-Strength Kit" (a stocked program, not a mystery raw material)
