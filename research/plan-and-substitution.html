@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Implementation Plan &amp; Substitution Map</title>
+<style>
+  @page{size:A4 portrait;margin:13mm 12mm;}
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:Arial,Helvetica,sans-serif;color:#161616;font-size:9pt;line-height:1.42;}
+  h1{font-size:17pt;color:#15433a;margin:0;}
+  .sub{color:#555;font-size:9pt;margin:3px 0 0;}
+  .meta{color:#777;font-size:7.6pt;border-bottom:1px solid #ddd;padding-bottom:7px;margin:6px 0 4px;}
+  h2{font-size:11.5pt;color:#fff;background:#15433a;padding:4px 9px;border-radius:3px;margin:15px 0 7px;}
+  h3{font-size:9.6pt;color:#15433a;margin:10px 0 3px;}
+  p{margin:5px 0;}
+  table{width:100%;border-collapse:collapse;margin:6px 0;}
+  th,td{border:1px solid #cbcbcb;padding:3px 6px;text-align:left;vertical-align:top;font-size:8.2pt;}
+  th{background:#eef3f1;text-transform:uppercase;letter-spacing:.2px;font-size:7.2pt;color:#333;}
+  td.c,th.c{text-align:center;}
+  .hero{background:#eaf3ef;border:1px solid #bcdbd0;border-radius:5px;padding:7px 10px;font-size:8.6pt;margin:6px 0;}
+  .tag{display:inline-block;background:#15433a;color:#fff;font-size:7pt;padding:1px 7px;border-radius:9px;letter-spacing:.5px;}
+  .note{font-size:8pt;color:#555;border-left:3px solid #c98a3a;background:#fdf7f0;padding:7px 10px;margin:8px 0;}
+  .note b{color:#9a3412;}
+  .phase{border:1px solid #cfcfcf;border-left:4px solid #15433a;border-radius:4px;padding:8px 11px;margin:7px 0;break-inside:avoid;}
+  .phase .ph{font-size:7.6pt;color:#15803d;letter-spacing:1px;font-weight:bold;}
+  .phase h3{margin:2px 0 4px;}
+  .phase ul{margin:4px 0 0;padding-left:16px;}
+  .phase li{margin-bottom:2px;font-size:8.3pt;}
+  .milestone{font-size:7.8pt;color:#15433a;margin-top:4px;}
+  .foot{margin-top:9px;border-top:1px solid #ddd;padding-top:6px;font-size:7.3pt;color:#888;}
+  .avoid{break-inside:avoid;}
+  .g{color:#15803d;font-weight:bold;}
+</style>
+</head>
+<body>
+
+  <h1>Implementation Plan &amp; Substitution Map</h1>
+  <p class="sub">How to replace the US import, function by function — and the phased plan, capex, team and milestones to build it. Gujarat-local direction: graded kraft-sack fibre + cotton + chemistry.</p>
+  <p class="meta">Prepared 2 Oct 2026 · Capex/team figures are indicative planning estimates — confirm with vendors. Proportions validate on the mill trial.</p>
+
+  <div class="hero avoid"><span class="tag">PRINCIPLE</span> &nbsp; The US import is not one thing — it delivers <b>four jobs at once</b>: long fibre (RCT), bonding (BF), consistency (grade), and on-tap supply. Substitute <b>each job</b> with an India source. Replace the system, not just a material.</div>
+
+  <h2>1 · Substitution map — what replaces each job of the import</h2>
+  <table>
+    <tr><th style="width:26%">What the US import provides</th><th style="width:34%">India substitute</th><th>Role in the blend</th></tr>
+    <tr><td><b>Long virgin fibre → RCT</b></td><td><b>Used kraft sacks</b> (cement/chemical/food) + <b>box trim/DLK</b>, graded</td><td>Core strength (15–35%)</td></tr>
+    <tr><td>Extra tear / reinforcement</td><td><b>Cotton waste / linter</b> (Gujarat)</td><td>Strength booster (5–8%)</td></tr>
+    <tr><td>Bulk fibre volume</td><td><b>Domestic OCC + bagasse</b></td><td>Cheap base (50–70%)</td></tr>
+    <tr><td><b>Bonding → BF</b></td><td>Cationic starch + GPAM</td><td>Wet-end dose</td></tr>
+    <tr><td><b>Compression → RCT boost</b></td><td>PVAm + refiner enzyme</td><td>Wet-end / refiner</td></tr>
+    <tr><td><b>Consistency / graded quality</b></td><td>Your <b>sort → grade → QC to spec</b> process</td><td>The value-add &amp; moat</td></tr>
+    <tr><td><b>On-tap supply, no 2-mo lock</b></td><td>Local <b>warehouse stock</b>, daily price</td><td>The logistics win</td></tr>
+  </table>
+
+  <h3>Substitution by BF grade (proportions to test)</h3>
+  <table>
+    <tr><th>Target</th><th class="c">OCC</th><th class="c">Kraft sacks</th><th class="c">Cotton</th><th class="c">Bagasse</th><th>Chemistry</th></tr>
+    <tr><td>18–22 BF</td><td class="c">80</td><td class="c">10</td><td class="c">–</td><td class="c">10</td><td>starch 1.0% + GPAM 0.2% + enzyme</td></tr>
+    <tr><td>24–28 BF</td><td class="c">60</td><td class="c">25</td><td class="c">5</td><td class="c">10</td><td>+ PVAm 0.3%</td></tr>
+    <tr><td>28–32 BF</td><td class="c">50</td><td class="c">35</td><td class="c">8</td><td class="c">7</td><td>starch 1.2% + GPAM 0.3% + PVAm 0.4% + enzyme</td></tr>
+    <tr><td>40–45 BF</td><td class="c">low</td><td class="c">high</td><td class="c">8–10</td><td class="c">–</td><td>max chemistry; may still need top virgin fibre</td></tr>
+  </table>
+
+  <h3>Fallback substitutions (flex by price / availability)</h3>
+  <table>
+    <tr><th>If this is short / costly…</th><th>Substitute with…</th></tr>
+    <tr><td>Kraft sacks scarce</td><td>More box trim / DLK; raise chemistry + enzyme dose</td></tr>
+    <tr><td>Cotton waste too pricey</td><td>Cheaper comber/dropping grades; or more kraft sacks + PVAm</td></tr>
+    <tr><td>OCC price spikes</td><td>More bagasse/straw as filler (short fibre — keep strength from sacks)</td></tr>
+    <tr><td>Need higher RCT fast</td><td>Lift kraft-sack % and PVAm; add toll-pulped cotton/virgin fibre for top grades</td></tr>
+  </table>
+  <div class="note"><b>Flexibility is the point:</b> because strength comes from a <i>few</i> graded long-fibre inputs + chemistry, you can swap the cheap base freely with price — the recipe is a dial, not a fixed formula.</div>
+
+  <h2>2 · The plan — phase by phase</h2>
+
+  <div class="phase">
+    <div class="ph">PHASE 0 · 0–2 MONTHS · VALIDATE</div>
+    <h3>Prove the substitution works</h3>
+    <ul>
+      <li>Buy <b>one US import bale</b> + collect local kraft-sack / cotton / OCC samples.</li>
+      <li>Lab-test the import → <b>write the target spec</b> (fibre length, BF/RCT contribution, cleanliness, moisture).</li>
+      <li>Run the <b>mill trial</b> (Control vs Mix A/B/C) on one associated mill; measure BF, RCT, colour, smell, runnability, ₹/tonne.</li>
+    </ul>
+    <div class="milestone">✔ Milestone: a passing recipe + proven ₹ saved/tonne. <b>Cost: low (samples + lab + trial time).</b></div>
+  </div>
+
+  <div class="phase">
+    <div class="ph">PHASE 1 · 2–6 MONTHS · SET UP</div>
+    <h3>Build the Fibre Grading &amp; Blending Unit</h3>
+    <ul>
+      <li>Lease a shed/warehouse in the <b>Morbi/Vapi/Ahmedabad</b> belt.</li>
+      <li>Install the line: intake, <b>sorting tables/conveyor</b>, de-contamination, moisture control, <b>baler</b>, weighbridge, small <b>QC lab</b> (burst + ring-crush testers).</li>
+      <li>Lock supply contracts for kraft sacks, box trim, cotton waste.</li>
+      <li><b>File patent/IP</b> on the recipe + grading method; register the grade brand ("India-DLK Grade A").</li>
+      <li>Sign first <b>5–10 mills</b> on gain-share.</li>
+    </ul>
+    <div class="milestone">✔ Milestone: unit producing graded bales to spec; first paying mills. <b>Capex: indicative ₹50 L–₹1.5 Cr for a modest unit (confirm with vendors).</b></div>
+  </div>
+
+  <div class="phase">
+    <div class="ph">PHASE 2 · 6–18 MONTHS · SCALE GUJARAT</div>
+    <h3>Own the belt</h3>
+    <ul>
+      <li>Roll across the <b>50 associated mills</b> + Morbi/Vapi cluster.</li>
+      <li>Build a <b>recipe library by BF grade</b>; standardise QC + spec sheets per grade.</li>
+      <li>Scale sorting throughput; add a second shift / baler as volume grows.</li>
+      <li>Formalise gain-share contracts; build the technical-service team.</li>
+    </ul>
+    <div class="milestone">✔ Milestone: steady recurring volume &amp; margin across dozens of mills.</div>
+  </div>
+
+  <div class="phase">
+    <div class="ph">PHASE 3 · 18 MONTHS+ · PAN-INDIA</div>
+    <h3>Expand the brand</h3>
+    <ul>
+      <li>Replicate the unit model in other mill clusters (UP-Muzaffarnagar, Punjab).</li>
+      <li>Scale to <b>500+ mills</b>; position "India-DLK" as a known graded brand.</li>
+      <li>Add a <b>premium tier</b> (toll-pulped cotton/MFC) for top grades as price allows.</li>
+    </ul>
+    <div class="milestone">✔ Milestone: national graded-fibre brand substituting imports at scale.</div>
+  </div>
+
+  <h2>3 · Capex, team &amp; KPIs (indicative)</h2>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;">
+    <table>
+      <tr><th>Capex item</th><th>Indicative</th></tr>
+      <tr><td>Shed / warehouse (lease)</td><td>monthly</td></tr>
+      <tr><td>Sorting line + conveyor</td><td>₹10–40 L</td></tr>
+      <tr><td>Baler + weighbridge</td><td>₹10–30 L</td></tr>
+      <tr><td>De-dust / moisture control</td><td>₹5–20 L</td></tr>
+      <tr><td>QC lab (burst, ring-crush, Cobb)</td><td>₹5–12 L</td></tr>
+      <tr><td><b>Total (modest unit)</b></td><td><b>~₹50 L–₹1.5 Cr</b></td></tr>
+    </table>
+    <table>
+      <tr><th>Team</th><th>Role</th></tr>
+      <tr><td>Plant/ops manager</td><td>Run the line</td></tr>
+      <tr><td>QC chemist</td><td>Spec &amp; lot testing</td></tr>
+      <tr><td>Sorting labour (10–20)</td><td>De-contaminate &amp; grade</td></tr>
+      <tr><td>Technical-service (2–3)</td><td>Mill trials &amp; dosing</td></tr>
+      <tr><td>Sales + logistics</td><td>Contracts &amp; delivery</td></tr>
+    </table>
+  </div>
+  <h3>KPIs to track</h3>
+  <table>
+    <tr><th>Metric</th><th>Target</th></tr>
+    <tr><td>% imported fibre displaced at client mills</td><td>30–60%+</td></tr>
+    <tr><td>Furnish ₹/tonne saved vs import recipe</td><td class="g">net positive</td></tr>
+    <tr><td>Lot pass-rate vs spec (consistency)</td><td>&gt; 95%</td></tr>
+    <tr><td>Grade BF/RCT vs import benchmark</td><td>match ±tolerance</td></tr>
+    <tr><td>Mills on recurring gain-share</td><td>grow 5 → 50 → 500</td></tr>
+  </table>
+
+  <div class="note avoid"><b>Risks &amp; mitigations:</b> (1) <b>Smell/drainage</b> from recovered fibre → hard QC pass/fail + enzyme for drainage. (2) <b>Supply variability</b> → multiple sack/trim contracts + fallback substitutions above. (3) <b>Quality consistency</b> → the spec + lot QC is exactly the mitigation. (4) <b>Competitors move down-market</b> → patent + first-mover channel lock. (5) All figures indicative → validate on trial &amp; with vendors before committing capital.</div>
+
+  <div class="foot avoid">Companion to: research dossier · full-process &amp; recipe · mill-trial protocol · QC checklist · competitor scan (all in PR #3 / research/). Prices &amp; capex indicative (India 2025) — confirm by quotation.</div>
+
+</body>
+</html>

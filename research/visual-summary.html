@@ -1,0 +1,492 @@
+<title>Kraft Fibre Play</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800&family=Libre+Franklin:wght@400;500;600&family=Space+Mono:wght@400;700&display=swap">
+<style>
+  /* Layout: a vertical one-pager infographic — hero thesis, problem flow, the hybrid
+     insight, the two-line solution, then a full business-model canvas + unit economics. */
+  :root{
+    --bg:#f5f4f1; --surface:#ffffff; --surface-2:#faf8f4;
+    --ink:#1c1a17; --muted:#6b645c; --line:#e4ded5;
+    --kraft:#a9713e;   /* imports / the problem */
+    --green:#1f6f5c;   /* domestic / the solution + primary accent */
+    --warn:#c2691c; --danger:#b0413a;
+    --green-wash:#e7f1ed; --kraft-wash:#f3e9dd;
+    --f-display:"Archivo","Arial Narrow",system-ui,sans-serif;
+    --f-body:"Libre Franklin",system-ui,-apple-system,sans-serif;
+    --f-mono:"Space Mono",ui-monospace,"Courier New",monospace;
+    --maxw:1080px;
+  }
+  @media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+    --bg:#141311; --surface:#1e1c18; --surface-2:#242119;
+    --ink:#f0ece4; --muted:#a39b8f; --line:#332e27;
+    --kraft:#d19a5f; --green:#51b093;
+    --warn:#e0903f; --danger:#e0756c;
+    --green-wash:#18312a; --kraft-wash:#30261a;
+    color-scheme:dark;
+  }}
+  :root[data-theme="dark"]{
+    --bg:#141311; --surface:#1e1c18; --surface-2:#242119;
+    --ink:#f0ece4; --muted:#a39b8f; --line:#332e27;
+    --kraft:#d19a5f; --green:#51b093;
+    --warn:#e0903f; --danger:#e0756c;
+    --green-wash:#18312a; --kraft-wash:#30261a;
+    color-scheme:dark;
+  }
+
+  *{box-sizing:border-box}
+  body{background:var(--bg);color:var(--ink);font-family:var(--f-body);line-height:1.5;
+       -webkit-font-smoothing:antialiased;font-size:15px}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding-inline:20px;padding-block:0}
+  h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.05;letter-spacing:-.01em}
+  p{margin:0}
+  .mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+  .eyebrow{font-family:var(--f-mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--muted)}
+  section{padding-block:46px;border-top:1px solid var(--line)}
+  section:first-of-type{border-top:0}
+  .lead{color:var(--muted);max-width:60ch}
+
+  /* HERO */
+  .hero{padding-block:52px 48px}
+  .hero .kicker{display:inline-flex;gap:8px;align-items:center;font-family:var(--f-mono);font-size:11px;
+      letter-spacing:.16em;text-transform:uppercase;color:var(--green);
+      background:var(--green-wash);border:1px solid var(--line);padding:5px 11px;border-radius:999px}
+  .hero h1{font-size:clamp(34px,7vw,66px);font-weight:800;margin:18px 0 0}
+  .hero h1 .im{color:var(--kraft)}
+  .hero h1 .so{color:var(--green)}
+  .hero .sub{font-size:clamp(16px,2.3vw,21px);color:var(--muted);margin-top:18px;max-width:40ch}
+  .hero .sub strong{color:var(--ink);font-weight:600}
+  .statline{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+  .stat{flex:1 1 150px;min-width:0;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+  .stat .n{font-family:var(--f-mono);font-size:clamp(20px,3vw,27px);font-weight:700;letter-spacing:-.02em}
+  .stat .l{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.3}
+  .stat.imp .n{color:var(--kraft)} .stat.sol .n{color:var(--green)}
+
+  .grid{display:grid;gap:16px}
+  .two{grid-template-columns:1fr 1fr}
+  .three{grid-template-columns:repeat(3,1fr)}
+  .four{grid-template-columns:repeat(4,1fr)}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:20px;min-width:0}
+  .card h3{font-size:18px;font-weight:700}
+  .card .ct{color:var(--muted);font-size:14px;margin-top:8px}
+  .sec-head{margin-bottom:24px}
+  .sec-head h2{font-size:clamp(23px,4vw,34px);font-weight:700;margin-top:8px}
+  .sec-head p{margin-top:12px}
+
+  /* PROBLEM — BF ladder */
+  .ladder{display:flex;flex-direction:column;gap:7px}
+  .rung{display:grid;grid-template-columns:70px 1fr auto;align-items:center;gap:12px}
+  .rung .bf{font-family:var(--f-mono);font-weight:700;font-size:13px;text-align:right;color:var(--muted)}
+  .rung .bar{height:30px;border-radius:7px;display:flex;align-items:center;padding-inline:10px;color:#fff;font-size:12px;font-weight:600;white-space:nowrap;overflow:hidden}
+  .rung .tag{font-size:11px;font-family:var(--f-mono);color:var(--muted);white-space:nowrap}
+  .b-ind{background:linear-gradient(90deg,var(--green),#2f8d75)}
+  .b-mix{background:linear-gradient(90deg,var(--warn),#d98a3e)}
+  .b-imp{background:linear-gradient(90deg,var(--kraft),#c6935f)}
+
+  .pains{display:grid;gap:12px;grid-template-columns:repeat(4,1fr)}
+  .pain{background:var(--kraft-wash);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .pain .ic{font-family:var(--f-mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--kraft);font-weight:700}
+  .pain .big{font-family:var(--f-mono);font-size:20px;font-weight:700;margin-top:8px}
+  .pain .d{font-size:12.5px;color:var(--muted);margin-top:6px}
+
+  /* BF vs RCT */
+  .vs{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+  .meter{margin-top:14px}
+  .meter .row{display:flex;align-items:center;gap:10px;margin-top:9px}
+  .meter .k{width:120px;font-size:12.5px;color:var(--muted);flex:none}
+  .meter .track{flex:1;height:13px;background:var(--surface-2);border:1px solid var(--line);border-radius:999px;overflow:hidden}
+  .meter .fill{height:100%;border-radius:999px}
+  .f-bf{background:var(--green)} .f-rct{background:var(--kraft)}
+  .meter .v{width:42px;text-align:right;font-family:var(--f-mono);font-size:12px;flex:none}
+
+  /* HYBRID equation */
+  .eq{display:flex;align-items:stretch;gap:12px;flex-wrap:wrap}
+  .eq .box{flex:1 1 160px;min-width:0;border-radius:16px;padding:18px;border:1px solid var(--line);background:var(--surface)}
+  .eq .box .t{font-family:var(--f-display);font-weight:700;font-size:16px}
+  .eq .box .s{font-size:12.5px;color:var(--muted);margin-top:6px}
+  .eq .op{display:flex;align-items:center;justify-content:center;font-family:var(--f-display);font-weight:800;font-size:28px;color:var(--muted);flex:none;padding:0 2px}
+  .eq .base{background:var(--surface-2)}
+  .eq .add{background:var(--green-wash);border-color:color-mix(in srgb,var(--green) 30%,var(--line))}
+  .eq .out{background:var(--ink);color:var(--bg)}
+  .eq .out .s{color:color-mix(in srgb,var(--bg) 70%,var(--ink))}
+  .quote{border-left:3px solid var(--green);padding:6px 0 6px 16px;margin-top:22px;font-size:15px}
+  .quote span{color:var(--muted);font-size:13px;display:block;margin-top:4px;font-family:var(--f-mono)}
+
+  /* SOLUTION lines */
+  .line-card{position:relative;overflow:hidden}
+  .line-card .num{font-family:var(--f-mono);font-size:12px;color:var(--green);font-weight:700;letter-spacing:.1em}
+  .chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:14px}
+  .chip{font-size:12px;font-family:var(--f-mono);background:var(--surface-2);border:1px solid var(--line);
+        border-radius:999px;padding:4px 10px;color:var(--muted)}
+  ul.ticks{list-style:none;padding:0;margin:14px 0 0;display:grid;gap:8px}
+  ul.ticks li{position:relative;padding-left:22px;font-size:13.5px;color:var(--muted)}
+  ul.ticks li::before{content:"";position:absolute;left:0;top:6px;width:11px;height:11px;border-radius:3px;background:var(--green)}
+
+  /* BUSINESS MODEL canvas */
+  .canvas{display:grid;gap:12px;grid-template-columns:repeat(3,1fr)}
+  .bm{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:16px}
+  .bm.key{background:var(--green-wash);border-color:color-mix(in srgb,var(--green) 28%,var(--line));grid-column:span 3}
+  .bm h4{margin:0;font-family:var(--f-display);font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--green)}
+  .bm ul{margin:10px 0 0;padding-left:18px;font-size:13px;color:var(--muted);display:grid;gap:5px}
+  .bm p{font-size:13px;color:var(--muted);margin-top:10px}
+  .bm.key p{color:var(--ink);font-size:15px}
+
+  /* UNIT ECONOMICS */
+  .econ{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}
+  .flowbars{display:grid;gap:12px;margin-top:4px}
+  .fb{display:grid;grid-template-columns:140px 1fr;gap:10px;align-items:center}
+  .fb .lbl{font-size:12.5px;color:var(--muted)}
+  .fb .barw{display:flex;align-items:center;gap:8px}
+  .fb .bar2{height:22px;border-radius:6px}
+  .fb .amt{font-family:var(--f-mono);font-size:12.5px;font-weight:600}
+  .save{background:var(--green)} .cost{background:var(--kraft)} .net{background:var(--ink)}
+  :root[data-theme="dark"] .net,:root:not([data-theme="light"]) .net{background:var(--ink)}
+  .ecallout{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:18px;display:flex;flex-direction:column;justify-content:center;gap:14px}
+  .ecallout .big{font-family:var(--f-mono);font-size:clamp(26px,5vw,38px);font-weight:700;color:var(--green);letter-spacing:-.02em}
+  .ecallout .sm{font-size:12.5px;color:var(--muted)}
+  .ecallout .div{height:1px;background:var(--line)}
+
+  /* ROADMAP */
+  .road{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative}
+  .phase{padding:18px 16px;border-left:2px solid var(--line);position:relative}
+  .phase:first-child{border-left:0}
+  .phase .ph{font-family:var(--f-mono);font-size:11px;color:var(--green);letter-spacing:.1em;font-weight:700}
+  .phase .pt{font-family:var(--f-display);font-weight:700;font-size:15px;margin-top:6px}
+  .phase .pd{font-size:12.5px;color:var(--muted);margin-top:8px}
+  .phase .dot{width:11px;height:11px;border-radius:50%;background:var(--green);position:absolute;left:-6px;top:20px}
+  .phase:first-child .dot{left:0}
+
+  /* MOAT + risks */
+  .moat{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+  .moat .m{display:flex;gap:11px;align-items:flex-start;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px}
+  .moat .m b{font-size:13.5px}
+  .moat .m span{font-size:12.5px;color:var(--muted)}
+  .moat .mi{font-family:var(--f-mono);font-weight:700;color:var(--green);flex:none;font-size:13px;margin-top:1px}
+
+  .note{background:var(--kraft-wash);border:1px solid color-mix(in srgb,var(--kraft) 30%,var(--line));
+        border-radius:14px;padding:16px 18px;font-size:13.5px}
+  .note b{color:var(--kraft)}
+
+  footer{border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font-size:12px}
+  footer .mono{font-size:11px}
+  .src{font-size:11px;color:var(--muted);margin-top:8px;line-height:1.6}
+
+  @media (max-width:760px){
+    .three,.four,.canvas{grid-template-columns:1fr 1fr}
+    .pains{grid-template-columns:1fr 1fr}
+    .road{grid-template-columns:1fr 1fr}
+    .bm.key{grid-column:span 2}
+    .econ,.vs,.two{grid-template-columns:1fr}
+  }
+  @media (max-width:440px){
+    .three,.four,.canvas,.pains,.road,.moat{grid-template-columns:1fr}
+    .bm.key{grid-column:span 1}
+    .rung{grid-template-columns:52px 1fr}
+    .rung .tag{display:none}
+    .fb{grid-template-columns:100px 1fr}
+    .eq .op{transform:rotate(90deg)}
+  }
+  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <header class="hero">
+    <span class="kicker">● Indian Kraft Paper · Import-Substitution Play</span>
+    <h1>Stop importing <span class="im">fibre</span>.<br>Sell the <span class="so">hybrid</span>.</h1>
+    <p class="sub">Mills import US waste only to reach high BF and <strong>RCT</strong>. Replace it with an all-India long-fibre blend — jute, bamboo &amp; domestic trim + strength chemistry — at <strong>~half the cost</strong>, no machine change.</p>
+    <div class="statline">
+      <div class="stat imp"><div class="n">5.76 Mt</div><div class="l">India recovered-paper imports, Jan–Oct 2025 (+19% YoY)</div></div>
+      <div class="stat imp"><div class="n">₹25–30<span style="font-size:13px">/kg</span></div><div class="l">Landed cost of imported fibre, with 2-month lock-in</div></div>
+      <div class="stat sol"><div class="n">30–60%</div><div class="l">Realistic cut in imported-fibre share via the program</div></div>
+      <div class="stat sol"><div class="n">500+</div><div class="l">Target kraft mills in India (50 already associated)</div></div>
+    </div>
+  </header>
+
+  <!-- PROBLEM -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">The problem</span>
+      <h2>Local waste caps out at ~18 BF. Strength lives overseas.</h2>
+      <p class="lead">Recycled Indian OCC is short-fibre and over-recycled. To climb the BF ladder — and to get edge-crush strength (RCT), not just burst — mills must blend in imported long fibre made from virgin wood pulp, which India can't produce (no fresh wood-pulp capacity).</p>
+    </div>
+
+    <div class="grid two" style="align-items:start">
+      <div class="card">
+        <span class="eyebrow">The BF ladder</span>
+        <div class="ladder" style="margin-top:14px">
+          <div class="rung"><span class="bf">16–18</span><div class="bar b-ind" style="width:40%">100% Indian OCC + starch</div><span class="tag">domestic only</span></div>
+          <div class="rung"><span class="bf">20–24</span><div class="bar b-mix" style="width:62%">Indian + 30–50% imported</div><span class="tag">blend begins</span></div>
+          <div class="rung"><span class="bf">28–35</span><div class="bar b-imp" style="width:82%">imported share rises</div><span class="tag">import-heavy</span></div>
+          <div class="rung"><span class="bf">40–45</span><div class="bar b-imp" style="width:100%">needs premium US DLK/DSOCC</div><span class="tag">import-locked</span></div>
+        </div>
+        <p class="ct">The higher the BF, the more imported long fibre a mill is forced to buy.</p>
+      </div>
+
+      <div class="card">
+        <span class="eyebrow">Why it hurts</span>
+        <div class="pains" style="margin-top:14px">
+          <div class="pain"><div class="ic">Freight</div><div class="big">Volatile</div><div class="d">Red Sea diversions keep ocean rates swinging</div></div>
+          <div class="pain"><div class="ic">Lead time</div><div class="big">~2 mo</div><div class="d">Book today, pay booked price even if it drops</div></div>
+          <div class="pain"><div class="ic">Price</div><div class="big">$150–250<span style="font-size:11px">/t</span></div><div class="d">US DSOCC premium vs EU OCC "barbell"</div></div>
+          <div class="pain"><div class="ic">Yield</div><div class="big">~10%</div><div class="d">100 t furnish → ~91 t finished paper</div></div>
+        </div>
+        <p class="ct">The durable pain isn't just freight — it's the cash locked in long shipments and the margin squeeze in an over-supplied market.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BF vs RCT -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">The technical crux</span>
+      <h2>Starch buys burst. It can't buy compression.</h2>
+      <p class="lead">This is why a cheap additive alone never fully replaced imported fibre — and why the real answer must rebuild the fibre network, not just the bonding.</p>
+    </div>
+    <div class="vs">
+      <div class="card">
+        <h3>Starch / basic bonding</h3>
+        <div class="meter">
+          <div class="row"><span class="k">BF (burst)</span><div class="track"><div class="fill f-bf" style="width:82%"></div></div><span class="v">high</span></div>
+          <div class="row"><span class="k">RCT (compression)</span><div class="track"><div class="fill f-rct" style="width:26%"></div></div><span class="v">low</span></div>
+        </div>
+        <p class="ct">Boosts inter-fibre bonding → burst &amp; tensile. Leaves edge-crush / stacking strength short.</p>
+      </div>
+      <div class="card">
+        <h3>Long imported fibre</h3>
+        <div class="meter">
+          <div class="row"><span class="k">BF (burst)</span><div class="track"><div class="fill f-bf" style="width:88%"></div></div><span class="v">high</span></div>
+          <div class="row"><span class="k">RCT (compression)</span><div class="track"><div class="fill f-rct" style="width:90%"></div></div><span class="v">high</span></div>
+        </div>
+        <p class="ct">Rebuilds the load-bearing fibre network → the RCT that boxes need to stack. That's what the import actually buys.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE HYBRID -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">The insight — Speaker 2's framing</span>
+      <h2>Don't replace the tonnage. Engineer a hybrid.</h2>
+      <p class="lead">No single cheap raw material fully replaces imported long fibre at half the cost with full RCT and no machine change. The deliverable win is a hybrid furnish — cheap Indian base, plus added strength inputs dosed into the existing line.</p>
+    </div>
+    <div class="eq">
+      <div class="box base"><div class="t">Cheap Indian OCC</div><div class="s">Base furnish you already run — low cost, locally abundant</div></div>
+      <div class="op">+</div>
+      <div class="box add"><div class="t">Strength inputs</div><div class="s">Dry-strength chemistry + refiner enzyme — "raw material you add," no retrofit</div></div>
+      <div class="op">+</div>
+      <div class="box add"><div class="t">India long fibre</div><div class="s">Jute waste · recovered gunny · domestic kraft trim · bamboo (premium) — real RCT, no sea freight</div></div>
+      <div class="op">=</div>
+      <div class="box out"><div class="t">Hybrid at target BF/RCT</div><div class="s">30–60% fewer imports · same look &amp; feel · priced daily</div></div>
+    </div>
+    <blockquote class="quote">"Toh simple term mein isko hybrid banana hai… main isko phir hybrid hi bolunga."
+      <span>— Speaker 2, naming the shape of the answer</span></blockquote>
+  </section>
+
+  <!-- SOLUTION -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">The product</span>
+      <h2>Two revenue lines, both pure trading.</h2>
+      <p class="lead">No pulp plant, no process technology to invent — stock, blend, distribute, and lightly service. Exactly the model the team already knows.</p>
+    </div>
+    <div class="grid two">
+      <div class="card line-card">
+        <div class="num">LINE 01 — recurring</div>
+        <h3 style="margin-top:6px">India-Strength Kit</h3>
+        <p class="ct">A warehouse-stocked program with a dosing recipe per BF grade: cationic starch base + GPAM + PVAm/dry-strength resin + a refiner enzyme.</p>
+        <div class="chips">
+          <span class="chip">no machine change</span><span class="chip">dosed at wet-end</span>
+          <span class="chip">holds RCT</span><span class="chip">per-tonne priced</span>
+        </div>
+        <ul class="ticks">
+          <li>Lets a mill swap imported fibre for cheap domestic OCC</li>
+          <li>Sold on ₹ saved per tonne of finished paper — recurring margin</li>
+          <li>Light technical service tunes the recipe per mill</li>
+        </ul>
+      </div>
+      <div class="card line-card">
+        <div class="num">LINE 02 — trading</div>
+        <h3 style="margin-top:6px">India Long-Fibre Supply</h3>
+        <p class="ct">Domestic long/strong fibre as a tonnage-for-tonnage substitute for imported waste — the part that actually delivers RCT.</p>
+        <div class="chips">
+          <span class="chip">jute waste</span><span class="chip">recovered gunny</span>
+          <span class="chip">domestic kraft trim</span><span class="chip">bamboo (premium)</span>
+        </div>
+        <ul class="ticks">
+          <li>Jute / gunny repulp in the mill's existing hydrapulper — drop-in, no new plant</li>
+          <li>Bamboo: 2–3 mm fibre ≈ softwood → full RCT, legal since 2017 (not a "tree")</li>
+          <li>No sea freight, no 2-month lock-in, daily price — buy-low/sell</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- THE 50% CUT -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">The 50% cut · illustrative</span>
+      <h2>Same BF &amp; RCT. Roughly half the fibre cost. Zero USA.</h2>
+      <p class="lead">The saving isn't one magic fibre cheaper than US waste — it's the blended cost of hitting the target grade with a cheap Indian base + a small domestic long-fibre share + strength chemistry that stretches it.</p>
+    </div>
+    <div class="grid two" style="align-items:stretch">
+      <div class="card">
+        <span class="eyebrow">Furnish cost to reach ~28 BF (matched RCT)</span>
+        <div class="meter" style="margin-top:12px">
+          <div class="row"><span class="k">US imported waste</span><div class="track"><div class="fill f-rct" style="width:100%"></div></div><span class="v">₹25–30</span></div>
+          <div class="row"><span class="k">India blend</span><div class="track"><div class="fill f-bf" style="width:52%"></div></div><span class="v">₹12–18</span></div>
+        </div>
+        <p class="ct" style="margin-top:14px">India blend = domestic OCC/agro base + jute-gunny / kraft-trim / bamboo long fibre + GPAM &amp; enzyme. ₹/kg of furnish; directional, validate on a live mill.</p>
+      </div>
+      <div class="card" style="background:var(--green-wash);border-color:color-mix(in srgb,var(--green) 28%,var(--line))">
+        <span class="eyebrow" style="color:var(--green)">The legal unlock</span>
+        <h3 style="margin-top:8px">Bamboo is not "wood pulp."</h3>
+        <p class="ct">Since the <b style="color:var(--ink)">Indian Forest (Amendment) Act, 2017</b>, bamboo on non-forest land is no longer a "tree" — no felling or transit permit, freely grown and traded, government-promoted. Its 2–3 mm fibre matches softwood, so it delivers the RCT the US import is bought for — <b style="color:var(--ink)">legally, in India.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- BUSINESS MODEL CANVAS -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Business model</span>
+      <h2>How it makes money — and stays defensible.</h2>
+    </div>
+    <div class="canvas">
+      <div class="bm key">
+        <h4>Value proposition</h4>
+        <p>Cut imported-fibre dependence 30–60% at a net cost saving — same paper, no machine change, stocked locally and priced daily, with zero 2-month shipment lock-in.</p>
+      </div>
+      <div class="bm">
+        <h4>Customer segments</h4>
+        <ul>
+          <li>Beachhead: 50 already-associated mills</li>
+          <li>Core: small/mid recycled-kraft mills — Gujarat (Morbi, Vapi, Ahmedabad)</li>
+          <li>Scale: 500+ mills pan-India</li>
+        </ul>
+      </div>
+      <div class="bm">
+        <h4>Revenue streams</h4>
+        <ul>
+          <li>Gain-share on the Strength Kit (₹/tonne of paper)</li>
+          <li>Trading margin on domestic long fibre</li>
+          <li>Recurring re-supply + recipe service</li>
+        </ul>
+      </div>
+      <div class="bm">
+        <h4>Pricing — gain-share</h4>
+        <ul>
+          <li>Split the saving: mill keeps ~half, you keep ~half</li>
+          <li>Priced per tonne improved, not per kg of additive</li>
+          <li>Daily index pricing — no booking risk</li>
+        </ul>
+      </div>
+      <div class="bm">
+        <h4>Key activities</h4>
+        <ul>
+          <li>Blend &amp; stock the kit; source domestic fibre</li>
+          <li>Run mill trials, tune recipes per grade</li>
+          <li>Hold local inventory for daily delivery</li>
+        </ul>
+      </div>
+      <div class="bm">
+        <h4>Key partners</h4>
+        <ul>
+          <li>Chemical makers (Solenis/BASF, Kemira, Ecolab, Buckman)</li>
+          <li>Enzyme suppliers</li>
+          <li>Box plants &amp; converters (trim supply)</li>
+        </ul>
+      </div>
+      <div class="bm">
+        <h4>Cost structure</h4>
+        <ul>
+          <li>Chemistry + enzyme COGS</li>
+          <li>Warehouse, inventory &amp; working capital</li>
+          <li>Small technical-service team; patent/IP</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- UNIT ECONOMICS -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Unit economics · illustrative</span>
+      <h2>Per tonne of 28 BF paper (import share 40% → 20%).</h2>
+    </div>
+    <div class="econ">
+      <div class="card">
+        <div class="flowbars">
+          <div class="fb"><span class="lbl">Raw-material saving<br><span class="mono" style="font-size:11px">imported→domestic swap</span></span>
+            <div class="barw"><div class="bar2 save" style="width:70%"></div><span class="amt" style="color:var(--green)">+₹1.60/kg</span></div></div>
+          <div class="fb"><span class="lbl">Added kit cost<br><span class="mono" style="font-size:11px">chemistry + enzyme</span></span>
+            <div class="barw"><div class="bar2 cost" style="width:44%"></div><span class="amt" style="color:var(--kraft)">−₹1.00/kg</span></div></div>
+          <div class="fb"><span class="lbl">Gross benefit pool</span>
+            <div class="barw"><div class="bar2 net" style="width:26%"></div><span class="amt">₹0.60/kg</span></div></div>
+        </div>
+        <p class="ct" style="margin-top:16px">Split the pool: the mill keeps part, you capture a recurring per-tonne margin — before counting the working-capital and lead-time relief, which the mill values on top.</p>
+      </div>
+      <div class="ecallout">
+        <div>
+          <div class="big">₹0.25–0.50<span style="font-size:14px;color:var(--muted)"> Cr/mo</span></div>
+          <div class="sm">Illustrative gross margin from <b>one</b> 500 t/day mill at a ₹0.5–1.0/kg captured share</div>
+        </div>
+        <div class="div"></div>
+        <div>
+          <div class="sm mono" style="color:var(--ink);font-weight:700;font-size:14px">× 50 → 500 mills</div>
+          <div class="sm">Monopoly thesis: own the under-served small-mill channel and the margin compounds across the book.</div>
+        </div>
+      </div>
+    </div>
+    <div class="note" style="margin-top:16px"><b>Reality check.</b> These figures are illustrative and must be validated on a live mill. Pitch it as <b>"cut imports 30–60% and de-risk cash flow,"</b> never "eliminate imports at half price" — overpromising burns credibility with technical mill owners.</div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section>
+    <div class="sec-head">
+      <span class="eyebrow">Go-to-market</span>
+      <h2>Prove once, then lock the channel.</h2>
+    </div>
+    <div class="road">
+      <div class="phase"><span class="dot"></span><div class="ph">PHASE 0 · 0–2 mo</div><div class="pt">Mill trial</div><div class="pd">One friendly mill. Baseline BF/RCT/cost → measure ₹/tonne saved &amp; % imports cut. This data is the sales engine.</div></div>
+      <div class="phase"><span class="dot"></span><div class="ph">PHASE 1 · 2–6 mo</div><div class="pt">Lock &amp; stock</div><div class="pd">Fix the formulation, file the patent, set up the Gujarat warehouse, sign the first 5–10 mills on gain-share.</div></div>
+      <div class="phase"><span class="dot"></span><div class="ph">PHASE 2 · 6–18 mo</div><div class="pt">Gujarat belt</div><div class="pd">Roll across the 50 associated mills + Morbi/Vapi/Ahmedabad cluster. Build recipe library by grade.</div></div>
+      <div class="phase"><span class="dot"></span><div class="ph">PHASE 3 · 18 mo+</div><div class="pt">Pan-India</div><div class="pd">Scale to 500+ mills. Add MFC/nanocellulose premium tier as its price falls.</div></div>
+    </div>
+  </section>
+
+  <!-- MOAT + who's already in -->
+  <section>
+    <div class="grid two" style="align-items:start">
+      <div>
+        <span class="eyebrow">The moat</span>
+        <h2 style="font-size:24px;font-weight:700;margin:8px 0 18px">Why this is defensible</h2>
+        <div class="moat">
+          <div class="m"><span class="mi">01</span><div><b>Patented recipe</b><br><span>Formulation + per-BF dosing method — IP, not just commodity chemicals</span></div></div>
+          <div class="m"><span class="mi">02</span><div><b>Local stock</b><br><span>Daily pricing, zero shipment lag — the thing imports can't match</span></div></div>
+          <div class="m"><span class="mi">03</span><div><b>Channel lock</b><br><span>First to serve under-served small mills the majors ignore</span></div></div>
+          <div class="m"><span class="mi">04</span><div><b>Aligned pricing</b><br><span>Gain-share — you only win when the mill saves</span></div></div>
+        </div>
+      </div>
+      <div>
+        <span class="eyebrow">Who's already working on it</span>
+        <h2 style="font-size:24px;font-weight:700;margin:8px 0 18px">The gap you walk into</h2>
+        <div class="card">
+          <p class="ct" style="margin-top:0">Global majors — <b style="color:var(--ink)">Solenis/BASF, Kemira, Ecolab, Buckman</b> — already sell dry-strength "reduce-your-fibre" programs, but chase <b style="color:var(--ink)">large integrated mills</b>. Indian R&amp;D (ICAR-CIRCOT on MFC, NITI Aayog on bamboo) is early-stage.</p>
+          <ul class="ticks">
+            <li>No one owns the simple, warehoused, per-tonne-priced kit for small kraft mills</li>
+            <li>Those mills buy imported fibre by habit, not because chemistry was productised for them</li>
+            <li>That bottom-of-market gap is the whole opportunity</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div><b style="color:var(--ink);font-family:var(--f-display)">Kraft Fibre Play</b> — visual summary of the import-substitution research. Figures marked illustrative are directional and need live-mill validation.</div>
+    <div class="src">Sources: GTAIC India waste-paper market 2025–26 · Pulp &amp; Paper Times (Paswara) · Fastmarkets · Xeneta freight outlook · Ecolab/Nalco &amp; Solenis dry-strength case data · TAPPI enzyme mill trials · NITI Aayog bamboo-for-pulp · BioResources (ICAR-CIRCOT MFC). Full citations in <span class="mono">research/kraft-paper-import-substitution.md</span>.</div>
+  </footer>
+
+</div>
