@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Kraft Fibre Import-Substitution Dossier</title>
+<style>
+  @page { size:A4 portrait; margin:16mm 15mm 15mm; }
+  @page:first { margin:0; }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{font-family:Georgia,'Times New Roman',serif;color:#1b1b1b;font-size:10pt;line-height:1.5;}
+  .sans{font-family:Arial,Helvetica,sans-serif;}
+  h1,h2,h3,h4,.sans,th,.cover,.toc,.kpi,.verdict,.tag{font-family:Arial,Helvetica,sans-serif;}
+  /* COVER */
+  .cover{height:297mm;background:#15433a;color:#fff;padding:34mm 22mm;display:flex;flex-direction:column;justify-content:space-between;}
+  .cover .tag{font-size:9pt;letter-spacing:3px;text-transform:uppercase;color:#9fd3c4;}
+  .cover h1{font-size:33pt;line-height:1.08;margin:14px 0 0;letter-spacing:-.5px;}
+  .cover h1 span{color:#8fd0bd;}
+  .cover .ded{font-size:12pt;color:#d6e7e2;margin-top:18px;max-width:135mm;line-height:1.5;}
+  .cover .foot{font-size:9.5pt;color:#bcd8d0;line-height:1.7;}
+  .cover .rule{height:3px;width:70px;background:#8fd0bd;margin:22px 0;}
+  /* GENERAL */
+  h2{font-size:15pt;color:#15433a;margin:0 0 3px;}
+  .h2bar{border-bottom:2px solid #15433a;padding-bottom:4px;margin:0 0 10px;display:flex;align-items:baseline;justify-content:space-between;}
+  .h2bar .n{font-size:9pt;color:#8a8a8a;letter-spacing:2px;}
+  h3{font-size:11pt;color:#1b4d42;margin:13px 0 4px;}
+  h4{font-size:9.5pt;color:#15433a;margin:9px 0 2px;text-transform:uppercase;letter-spacing:.5px;}
+  p{margin:6px 0;}
+  .lead{color:#444;font-size:10.5pt;}
+  section{page-break-before:always;}
+  .nobreak{break-inside:avoid;}
+  table{width:100%;border-collapse:collapse;margin:7px 0;font-family:Arial,Helvetica,sans-serif;}
+  th,td{border:1px solid #cfcfcf;padding:4px 7px;text-align:left;vertical-align:top;font-size:8.6pt;}
+  th{background:#eef3f1;text-transform:uppercase;letter-spacing:.3px;font-size:7.8pt;color:#333;}
+  td.c,th.c{text-align:center;}
+  .kpi{display:flex;gap:10px;margin:12px 0;}
+  .kpi .k{flex:1;border:1px solid #d7d7d7;border-top:3px solid #15433a;border-radius:4px;padding:9px 11px;}
+  .kpi .n{font-size:16pt;font-weight:bold;color:#15433a;letter-spacing:-.5px;}
+  .kpi .l{font-size:7.8pt;color:#555;margin-top:3px;line-height:1.3;}
+  .verdict{border:2px solid #15433a;border-radius:6px;background:#f3f8f6;padding:11px 14px;margin:11px 0;font-family:Arial,Helvetica,sans-serif;font-size:9.2pt;}
+  .verdict b{color:#15433a;}
+  ul{margin:5px 0;padding-left:18px;}li{margin-bottom:3px;}
+  .toc{font-family:Arial,Helvetica,sans-serif;}
+  .toc div{display:flex;justify-content:space-between;border-bottom:1px dotted #bbb;padding:6px 0;font-size:10pt;}
+  .toc .t{color:#15433a;font-weight:bold;}
+  .note{font-size:8.4pt;color:#555;border-left:3px solid #c98a3a;background:#fdf7f0;padding:7px 10px;margin:9px 0;}
+  .note b{color:#9a3412;}
+  .cols{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .box{border:1px solid #ccc;border-radius:5px;padding:9px 11px;font-family:Arial,Helvetica,sans-serif;font-size:8.6pt;}
+  .box.g{border-color:#15803d;background:#f2faf5;}
+  .box.o{border-color:#b45309;background:#fff8f0;}
+  .tl-low{color:#15803d;font-weight:bold;}.tl-med{color:#b45309;font-weight:bold;}
+  .eq{display:flex;align-items:stretch;gap:5px;font-family:Arial,Helvetica,sans-serif;margin:8px 0;}
+  .eq .b{flex:1;border:1px solid #cfcfcf;border-radius:5px;padding:7px;font-size:7.8pt;text-align:center;}
+  .eq .b .t{font-weight:bold;color:#15433a;font-size:8.4pt;}
+  .eq .op{display:flex;align-items:center;font-weight:bold;color:#999;}
+  .eq .out{background:#15433a;color:#fff;}.eq .out .t{color:#fff;}
+  .src{font-size:7.6pt;color:#666;line-height:1.55;word-break:break-word;}
+  .pgfoot{position:running(f);}
+  .small{font-size:8pt;color:#666;}
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<div class="cover">
+  <div>
+    <div class="tag">Business &amp; Technical Dossier · Confidential</div>
+    <h1>Replacing Imported<br>Waste Paper with an<br><span>All-India Fibre Blend</span></h1>
+    <div class="rule"></div>
+    <div class="ded">Cutting Indian kraft paper mills' dependence on US/EU imported fibre for high-BF grades — matching strength, RCT, colour and smell at roughly half the cost, sourced entirely in India, with no machine change.</div>
+  </div>
+  <div class="foot">
+    Prepared 2 October 2026 · Opus 4.8 research<br>
+    Scope: problem, solution, economics, business model, competition, mill-trial protocol &amp; sourcing<br>
+    All prices indicative public data (India 2025–26) — confirm by quotation before acting.
+  </div>
+</div>
+
+<!-- ===== TOC + EXEC SUMMARY ===== -->
+<section style="page-break-before:avoid;">
+  <div class="h2bar"><h2>Contents</h2></div>
+  <div class="toc">
+    <div><span class="t">1 · Executive summary</span><span>below</span></div>
+    <div><span class="t">2 · The problem, decoded</span><span>p.2</span></div>
+    <div><span class="t">3 · Market &amp; economics</span><span>p.3</span></div>
+    <div><span class="t">4 · The committed India solution</span><span>p.4</span></div>
+    <div><span class="t">5 · Does it match US quality?</span><span>p.5</span></div>
+    <div><span class="t">6 · Business model</span><span>p.6</span></div>
+    <div><span class="t">7 · Who is already doing this in India</span><span>p.7</span></div>
+    <div><span class="t">8 · Mill-trial protocol &amp; sourcing</span><span>p.8</span></div>
+    <div><span class="t">9 · Risks, caveats &amp; next steps</span><span>p.9</span></div>
+    <div><span class="t">Appendix · Glossary &amp; sources</span><span>p.10</span></div>
+  </div>
+
+  <div class="h2bar" style="margin-top:20px;"><h2>1 · Executive summary</h2></div>
+  <p class="lead">Indian mills make 16–18 BF kraft easily from local recycled waste. For 22 BF and above — and for <b>RCT (edge-crush strength)</b>, not just burst — they must blend in <b>imported US/EU waste paper</b> that carries long virgin fibre India cannot produce. That import is the pain: volatile ocean freight, a ~2-month price lock-in, and ~₹25–30/kg landed cost.</p>
+  <div class="verdict"><b>The honest finding.</b> No single cheap Indian material is half the price of US <i>waste</i> on a like-for-like tonne. The real ~50% saving comes from an <b>all-India blend</b> whose cost to hit the same BF + RCT is about half: a cheap domestic base + a small share of domestic long fibre (jute waste, kraft trim, bamboo) + strength chemistry that multiplies each fibre's strength — dropped in where the import went, <b>no machine change.</b></div>
+  <div class="kpi">
+    <div class="k"><div class="n">5.76 Mt</div><div class="l">India recovered-paper imports Jan–Oct 2025 (+19% YoY)</div></div>
+    <div class="k"><div class="n">~50%</div><div class="l">Target cut in furnish cost to reach the same grade</div></div>
+    <div class="k"><div class="n">500+</div><div class="l">Addressable kraft mills (50 already associated)</div></div>
+    <div class="k"><div class="n">Open</div><div class="l">The trading model (stocked blend for small mills) looks unoccupied</div></div>
+  </div>
+  <p class="small">This dossier is a researched proposal, not a lab result. The one true proof is a 4–6 week mill trial (section 8).</p>
+</section>
+
+<!-- ===== 2 PROBLEM ===== -->
+<section>
+  <div class="h2bar"><h2>2 · The problem, decoded</h2><span class="n">PROBLEM</span></div>
+  <p>Recycled Indian OCC is short-fibre and over-recycled, so it caps out around 18 BF. Climbing the BF ladder — and getting compression strength — needs long virgin fibre, imported because India has no fresh wood-pulp capacity (forest limits).</p>
+  <table class="nobreak">
+    <tr><th>Grade</th><th>How it is made today</th><th>Imported-fibre dependence</th></tr>
+    <tr><td>16–18 BF</td><td>100% Indian OCC + starch</td><td>None</td></tr>
+    <tr><td>20–24 BF</td><td>Indian OCC + 30–50% imported</td><td>Rising</td></tr>
+    <tr><td>28–35 BF</td><td>Import-heavy blend</td><td>High</td></tr>
+    <tr><td>40–45 BF</td><td>Premium US DLK/DSOCC</td><td>Locked to imports</td></tr>
+  </table>
+  <h3>The technical crux: starch buys burst, not compression</h3>
+  <table class="nobreak">
+    <tr><th>Property</th><th>What drives it</th><th>Starch / bonding</th><th>Long imported fibre</th></tr>
+    <tr><td><b>BF (Burst Factor)</b></td><td>Inter-fibre bonding</td><td class="c">High ✓</td><td class="c">High ✓</td></tr>
+    <tr><td><b>RCT (Ring Crush)</b></td><td>Fibre network / stiffness</td><td class="c">Low ✗</td><td class="c">High ✓</td></tr>
+  </table>
+  <p>The import buys two things at once — long fibre for RCT <i>and</i> bonding surface for BF. Starch replaces only the second. Any real substitute must rebuild the <b>compression-bearing fibre network</b>, which is the hard, valuable part.</p>
+  <div class="note"><b>The four pains:</b> volatile ocean freight (Red Sea) · ~2-month shipment lead with price lock-in · US$150–250/t fibre · ~10% furnish yield loss. The durable pain is lead-time + working capital + margin squeeze in an over-supplied market — not freight alone.</div>
+</section>
+
+<!-- ===== 3 MARKET ===== -->
+<section>
+  <div class="h2bar"><h2>3 · Market &amp; economics</h2><span class="n">MARKET</span></div>
+  <table class="nobreak">
+    <tr><th>Metric</th><th>Figure (2025–26)</th><th>Source</th></tr>
+    <tr><td>India recovered-paper imports (Jan–Oct 2025)</td><td>~5.76 Mt, +19.3% YoY</td><td>GTAIC</td></tr>
+    <tr><td>Average import proxy price (LTM)</td><td>~US$200/t</td><td>GTAIC</td></tr>
+    <tr><td>US vs Italy proxy ("barbell")</td><td>US$216.7/t vs US$175.2/t</td><td>GTAIC</td></tr>
+    <tr><td>EU OCC / US DSOCC peaks</td><td>~US$200 / ~US$250/t</td><td>Paswara (P&amp;P Times)</td></tr>
+    <tr><td>Recent EOCC 95/5</td><td>~US$150 CNF/t</td><td>Fastmarkets</td></tr>
+    <tr><td>Landed imported fibre (per voice-note &amp; market)</td><td>~₹25–30/kg</td><td>Market / brief</td></tr>
+    <tr><td>Domestic kraft market</td><td>Over-capacity; 5-day/month mill shutdowns</td><td>P&amp;P Times</td></tr>
+  </table>
+  <p>Imported fibre lands ~₹25–30/kg delivered, matching the field brief. Freight is <b>volatile, not permanently high</b> — so the pitch should anchor on lead-time, working capital and ₹/tonne, not on "freight always rises."</p>
+</section>
+
+<!-- ===== 4 SOLUTION ===== -->
+<section>
+  <div class="h2bar"><h2>4 · The committed India solution</h2><span class="n">SOLUTION</span></div>
+  <p class="lead">An all-India long-fibre blend, dropped in exactly where US waste went — no machine change at the mill.</p>
+  <div class="eq nobreak">
+    <div class="b"><div class="t">Cheap Indian base</div>OCC + bagasse/straw (60–70%)</div>
+    <div class="op">+</div>
+    <div class="b"><div class="t">India long fibre</div>jute waste · gunny · kraft trim · bamboo (15–25%)</div>
+    <div class="op">+</div>
+    <div class="b"><div class="t">Strength multiplier</div>GPAM · PVAm · starch · enzyme</div>
+    <div class="op">=</div>
+    <div class="b out"><div class="t">Same BF &amp; RCT</div>₹12–18/kg vs ₹25–30 imported</div>
+  </div>
+  <h3>Where the 50% actually comes from</h3>
+  <p>Not one fibre cheaper than US <i>waste</i> (virgin bamboo pulp ≈ ₹58/kg is dearer). The saving is on the <b>blended cost of hitting the grade</b>: replace expensive imported waste with a cheap base + a small long-fibre share + chemistry that lets less long fibre do the work.</p>
+  <table class="nobreak">
+    <tr><th>Layer</th><th>India source</th><th>Role</th><th>Indicative cost</th></tr>
+    <tr><td>Base 60–70%</td><td>Domestic OCC + bagasse/wheat straw</td><td>Bulk furnish</td><td>₹10–15/kg</td></tr>
+    <tr><td>Long fibre 15–25%</td><td>Jute waste / gunny · domestic kraft trim · bamboo (premium)</td><td>Delivers RCT</td><td>₹8–22/kg</td></tr>
+    <tr><td>Multiplier</td><td>GPAM + PVAm + starch + enzyme</td><td>More strength per fibre</td><td>+₹1–2.5/kg paper</td></tr>
+    <tr><td><b>= Blend</b></td><td>—</td><td>Same BF/RCT, India-only</td><td><b>₹12–18/kg (~40–50% less)</b></td></tr>
+  </table>
+  <h3>Why it genuinely works, not just a cost trick</h3>
+  <ul>
+    <li><b>Jute / recovered gunny</b> — long, strong bast fibre; documented as able to replace long-fibre bamboo and imported softwood; can repulp in the mill's existing hydrapulper (drop-in, no new plant — validate smell/cleaning).</li>
+    <li><b>Bamboo</b> — 2–3 mm fibre ≈ softwood → full RCT; and the <b>legal unlock</b>: since the 2017 Forest Act amendment, bamboo on non-forest land is not a "tree" (no permit, freely traded, government-promoted). Buy market pulp or toll-pulp; don't build a mill.</li>
+    <li><b>Domestic kraft trim / DLK</b> — imported-grade long fibre, generated in India, no sea freight.</li>
+    <li><b>Chemistry + enzyme</b> — "raw materials you add" at the existing wet-end/refiner.</li>
+  </ul>
+</section>
+
+<!-- ===== 5 MATCH ===== -->
+<section>
+  <div class="h2bar"><h2>5 · Does it match US quality?</h2><span class="n">QUALITY</span></div>
+  <p>Researched confidence per attribute. The only true proof is the trial in section 8.</p>
+  <table class="nobreak">
+    <tr><th>US material gives</th><th>Can India blend match?</th><th>Confidence</th><th>What to watch</th></tr>
+    <tr><td>BF (burst)</td><td>Yes</td><td class="tl-low">High</td><td>Starch + GPAM handle it</td></tr>
+    <tr><td>RCT (strength)</td><td>Yes, to a point</td><td class="tl-med">Med–High</td><td>35–45 BF needs more bamboo → cost gap narrows</td></tr>
+    <tr><td>Colour</td><td>Yes</td><td class="tl-low">High</td><td>All browns; minor dye tuning</td></tr>
+    <tr><td>Smell</td><td>Mostly — must verify</td><td class="tl-med">Medium</td><td><b>#1 trial checkpoint</b> (jute/gunny odour)</td></tr>
+    <tr><td>Runs on same machine</td><td>Yes, with enzyme</td><td class="tl-med">Med–High</td><td>Confirm drainage &amp; speed hold</td></tr>
+  </table>
+  <div class="note"><b>Honest:</b> strength and colour are the safe parts; smell and drainage are the real watch-items — which is exactly why they are explicit pass/fail lines in the trial protocol. No blind guarantee; expect 1–2 dose iterations.</div>
+</section>
+
+<!-- ===== 6 BUSINESS MODEL ===== -->
+<section>
+  <div class="h2bar"><h2>6 · Business model</h2><span class="n">MODEL</span></div>
+  <div class="verdict"><b>Value proposition:</b> Cut imported-fibre dependence 30–60% at a net cost saving — same paper, no machine change, stocked locally and priced daily, zero 2-month shipment lock-in.</div>
+  <div class="cols nobreak">
+    <div class="box"><h4>Revenue streams</h4><ul><li>Gain-share on the strength kit (₹/tonne paper)</li><li>Trading margin on domestic long fibre</li><li>Recurring re-supply + recipe service</li></ul></div>
+    <div class="box"><h4>Pricing — gain-share</h4><ul><li>Split the saving: mill keeps ~half, you keep ~half</li><li>Priced per tonne improved, not per kg additive</li><li>Daily index pricing — no booking risk</li></ul></div>
+    <div class="box"><h4>Customer segments</h4><ul><li>Beachhead: 50 associated mills</li><li>Core: small/mid kraft mills — Gujarat (Morbi/Vapi/Ahmedabad)</li><li>Scale: 500+ pan-India</li></ul></div>
+    <div class="box"><h4>Key partners</h4><ul><li>Chemical makers (Solenis/BASF, Kemira, Ecolab, Buckman)</li><li>Enzyme (Advanced Enzymes, Novonesis)</li><li>Box plants &amp; jute mills (fibre)</li></ul></div>
+  </div>
+  <h3>Unit economics — illustrative, per tonne of 28 BF paper (imports 40% → 20%)</h3>
+  <table class="nobreak">
+    <tr><th>Line</th><th>Value</th></tr>
+    <tr><td>Raw-material saving (imported → domestic swap)</td><td>+₹1.60/kg paper</td></tr>
+    <tr><td>Added kit cost (chemistry + enzyme)</td><td>−₹1.00/kg paper</td></tr>
+    <tr><td><b>Gross benefit pool to split</b></td><td><b>₹0.60/kg paper</b></td></tr>
+    <tr><td>Your captured share (illustrative ₹0.5–1.0/kg)</td><td>~₹0.25–0.5 Cr/month per 500 t/day mill</td></tr>
+  </table>
+  <h4>Go-to-market</h4>
+  <table class="nobreak">
+    <tr><th>Phase 0 · 0–2 mo</th><th>Phase 1 · 2–6 mo</th><th>Phase 2 · 6–18 mo</th><th>Phase 3 · 18 mo+</th></tr>
+    <tr><td>One mill trial → prove ₹/t saved &amp; % imports cut</td><td>Lock formulation, file patent, Gujarat warehouse, first 5–10 mills</td><td>50 associated mills + Gujarat belt; recipe library by grade</td><td>Pan-India 500+; add MFC premium tier as price falls</td></tr>
+  </table>
+  <h4>Moat</h4>
+  <p>Patented recipe + per-BF dosing method · local stock (daily price, no lag) · first-mover channel into under-served small mills · gain-share pricing aligns incentives.</p>
+  <div class="note"><b>Reality check:</b> figures are illustrative and need live-mill validation. Pitch "cut imports 30–60% and de-risk cash flow," never "eliminate imports at half price."</div>
+</section>
+
+<!-- ===== 7 COMPETITION ===== -->
+<section>
+  <div class="h2bar"><h2>7 · Who is already doing this in India</h2><span class="n">COMPETITION</span></div>
+  <div class="verdict"><b>Idea active, model open.</b> Domestic-fibre substitution is already pursued — but as <b>integrated mills</b> making their own paper, or <b>chemical majors</b> selling to large mills. Nobody appears to sell a stocked, drop-in domestic long-fibre + chemistry blend to small kraft mills on gain-share.</div>
+  <table class="nobreak">
+    <tr><th>Player</th><th>Feedstock</th><th>Model</th><th>Overlap</th><th class="c">Threat</th></tr>
+    <tr><td>Yash Pakka (Ayodhya)</td><td>Bagasse (~75k t/yr)</td><td>Integrated; CHUK tableware, exports 43 countries</td><td>Agro, food/compostable focus</td><td class="c tl-med">Med</td></tr>
+    <tr><td>Ruchira Papers (HP)</td><td>Wheat straw, bagasse, rice husk</td><td>Integrated agro packaging grades</td><td>Sells finished paper</td><td class="c tl-med">Med</td></tr>
+    <tr><td>KR Papers (Gujarat)</td><td>Bagasse + agro</td><td>Integrated kraft/packaging, 30+ yr</td><td>Agro kraft, your region</td><td class="c tl-med">Med</td></tr>
+    <tr><td>NatureWrks (IIT-M)</td><td>Ag waste</td><td>Start-up, own products</td><td>Different class</td><td class="c tl-low">Low</td></tr>
+    <tr><td>Amazon × IIT-Roorkee</td><td>Farm waste</td><td>R&amp;D, captive (~2027)</td><td>Not merchant fibre</td><td class="c tl-low">Low</td></tr>
+    <tr><td>Bamboo missions / DPRs</td><td>Bamboo</td><td>Proposed 20–40k MT plants</td><td>Supply source &amp; future rival</td><td class="c tl-med">Med if built</td></tr>
+    <tr><td>Solenis/Kemira/Ecolab/Buckman</td><td>Chemistry</td><td>Dry-strength to large mills</td><td>No fibre bundle / small-mill model</td><td class="c tl-low">Low</td></tr>
+  </table>
+  <div class="cols nobreak" style="margin-top:8px;">
+    <div class="box o"><h4 style="margin-top:0">What's taken</h4><ul><li>Integrated agro/bamboo mills</li><li>Chemical majors → large mills</li><li>Government/research pushing substitution</li></ul></div>
+    <div class="box g"><h4 style="margin-top:0">What's open (your slot)</h4><ul><li>A trader, not a mill</li><li>Drop-in blend sold TO small mills</li><li>Warehouse-stocked, daily-priced</li><li>Gain-share, no machine change</li></ul></div>
+  </div>
+  <p class="small">Caveat: absence of public evidence ≠ nobody private. Scout 5–10 mills + suppliers before scaling.</p>
+</section>
+
+<!-- ===== 8 TRIAL ===== -->
+<section>
+  <div class="h2bar"><h2>8 · Mill-trial protocol &amp; sourcing</h2><span class="n">PROOF</span></div>
+  <p>Prove it on one mill in ~4–6 weeks: run CONTROL (current imported recipe) vs 3 India blends; measure the same properties; the cheapest blend that passes all is the product.</p>
+  <h4>Recipes (% of oven-dry furnish)</h4>
+  <table class="nobreak">
+    <tr><th>Component</th><th class="c">T1 drop-in</th><th class="c">T2 +bamboo</th></tr>
+    <tr><td>Domestic OCC</td><td class="c">70</td><td class="c">60</td></tr>
+    <tr><td>Imported fibre</td><td class="c">0</td><td class="c">0</td></tr>
+    <tr><td>Bagasse</td><td class="c">–</td><td class="c">10</td></tr>
+    <tr><td>Jute waste / gunny</td><td class="c">15</td><td class="c">10</td></tr>
+    <tr><td>Domestic kraft trim</td><td class="c">15</td><td class="c">10</td></tr>
+    <tr><td>Bamboo pulp</td><td class="c">–</td><td class="c">10</td></tr>
+    <tr><td>Starch / GPAM / resin</td><td class="c">1.0 / 0.2 / 0.3%</td><td class="c">1.0 / 0.2 / 0.3%</td></tr>
+    <tr><td>Enzyme (refiner)</td><td class="c">0.3 kg/t</td><td class="c">0.3 kg/t</td></tr>
+  </table>
+  <h4>Tests &amp; pass targets</h4>
+  <table class="nobreak">
+    <tr><th>Property</th><th>Method</th><th>Pass vs control</th></tr>
+    <tr><td>BF</td><td>IS 1060 / ISO 2758 / T403</td><td>Within ±1 BF point</td></tr>
+    <tr><td>RCT</td><td>ISO 12192 / TAPPI T822</td><td>≥ 95% of control</td></tr>
+    <tr><td>Cobb</td><td>ISO 535</td><td>Within ±10%</td></tr>
+    <tr><td>Colour</td><td>ΔE / light-box</td><td>Visually matched</td></tr>
+    <tr><td>Smell</td><td>5-person blind panel</td><td>Neutral / no off-odour</td></tr>
+    <tr><td>Runnability</td><td>Drainage, speed, breaks</td><td>Speed ≥ 95%, no new breaks</td></tr>
+  </table>
+  <h4>Sourcing (indicative 2025 — confirm by quote)</h4>
+  <table class="nobreak">
+    <tr><th>Material</th><th>Where / who</th><th>Price</th></tr>
+    <tr><td>Domestic OCC</td><td>Local traders; Gujarat belt</td><td>₹14–23/kg</td></tr>
+    <tr><td>Jute waste / gunny (not raw jute)</td><td>WB jute mills; scrap dealers</td><td>gunny scrap ~₹15–17/pc</td></tr>
+    <tr><td>Domestic kraft trim / DLK</td><td>Box plants / converters</td><td>₹18–24/kg</td></tr>
+    <tr><td>Bagasse</td><td>Sugar mills (MH/UP/GJ)</td><td>₹1.4–2.2/kg</td></tr>
+    <tr><td>Bamboo unbleached pulp</td><td>Buy market / toll-pulp</td><td>₹58–62/kg</td></tr>
+    <tr><td>Starch</td><td>Gujarat Ambuja, Sukhjit, Roquette</td><td>₹45–70/kg</td></tr>
+    <tr><td>GPAM / resin</td><td>Anmol Polymers, UP Alums, majors</td><td>quote</td></tr>
+    <tr><td>Enzyme</td><td>Advanced Enzyme Technologies, Novonesis</td><td>quote</td></tr>
+  </table>
+</section>
+
+<!-- ===== 9 RISKS ===== -->
+<section>
+  <div class="h2bar"><h2>9 · Risks, caveats &amp; next steps</h2><span class="n">DECISION</span></div>
+  <h3>Risks &amp; honest caveats</h3>
+  <ul>
+    <li><b>No blind guarantee</b> — results depend on the mill's furnish, water and machine; expect 1–2 dose iterations.</li>
+    <li><b>Highest grades (35–45 BF)</b> lean more on bamboo → cost gap narrows; prove the 18–28 BF sweet spot first.</li>
+    <li><b>Smell &amp; drainage</b> are the real watch-items with jute/gunny &amp; agro.</li>
+    <li><b>Chemistry is partly commoditised</b> — the moat is IP + local stock + service + the small-mill channel, not the molecules.</li>
+    <li><b>Credible incumbents</b> (Yash Pakka, Ruchira, KR, bamboo plants) could move down-market; speed + patent matter.</li>
+    <li><b>All ₹ figures indicative</b> — validate by quotation and on a live mill before committing capital.</li>
+  </ul>
+  <h3>Immediate next steps</h3>
+  <ul>
+    <li>Pick one associated mill; capture its current BF, RCT, furnish %, imported-fibre cost, starch dose.</li>
+    <li>Get trial samples: chemistry/enzyme kits + a few hundred kg of each Indian fibre.</li>
+    <li>Run the 4–6 week trial (section 8); measure ₹/tonne saved &amp; % imports displaced.</li>
+    <li>If net-positive: lock the formulation, file IP, set up the Gujarat warehouse, start gain-share sales.</li>
+    <li>In parallel, scout 5–10 mills + suppliers to confirm the model is still open.</li>
+  </ul>
+</section>
+
+<!-- ===== APPENDIX ===== -->
+<section>
+  <div class="h2bar"><h2>Appendix · Glossary &amp; sources</h2><span class="n">REFERENCE</span></div>
+  <h4>Glossary</h4>
+  <p class="small"><b>BF</b> Burst Factor (bonding-driven) · <b>RCT</b> Ring Crush Test, edge compression / stacking strength (fibre-network-driven) · <b>CMT</b> Concora fluting crush · <b>OCC</b> Old Corrugated Containers · <b>DLK/DSOCC</b> premium long-fibre imported grades · <b>GPAM</b> glyoxalated polyacrylamide · <b>PVAm</b> polyvinylamine · <b>MFC/NFC</b> micro/nano-fibrillated cellulose · <b>Hornification</b> irreversible fibre bonding loss on recycling · <b>Yield loss</b> input vs output gap (~8–12%).</p>
+  <h4>Sources</h4>
+  <div class="src">
+    GTAIC India waste-paper market 2025–26 — gtaic.ai · Pulp &amp; Paper Times (excess capacity; Paswara OCC prices) — thepulpandpapertimes.com · Fastmarkets recovered paper — fastmarkets.com · Xeneta Red Sea / freight outlook — xeneta.com · BioResources nanocellulose/CPAM on recycled board — bioresources.cnr.ncsu.edu · Ecolab/Nalco dry-strength (GPAM×starch ring-crush) · Solenis dry-strength case history — solenis.com · TAPPI enzyme refiner mill trials — tappi.org · NITI Aayog bamboo for pulp — niti.gov.in · BioResources ICAR-CIRCOT MFC cotton linters · PIB 2017 Forest Act amendment (bamboo not a "tree") — pib.gov.in · IPPTA economics of bamboo &amp; "Can we use Jute" — ippta.co · IndexBox bamboo pulp price India · ISO 12192 / TAPPI T822 (RCT) — zwickroell.com · Advanced Enzyme Technologies — advancedenzymes.com · paperindex.com (chemical &amp; waste-paper directories) · krpapers.com · aboutamazon.com (Amazon × IIT-Roorkee) · IIT-Madras NatureWrks release · IPMA — ipmaindia.org. Full clickable URLs in research/kraft-paper-import-substitution.md (Appendix B).
+  </div>
+  <p class="small" style="margin-top:12px;color:#999;">End of dossier · Prepared 2 Oct 2026 · All figures indicative public data for planning, not firm quotes.</p>
+</section>
+
+</body>
+</html>
