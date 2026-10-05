@@ -60,9 +60,15 @@ class H(BaseHTTPRequestHandler):
         c = connect()
         try:
             if u.path == "/":
-                rows = [{"id": r["id"], "date": r["note_date"], "party": r["party_text"], "bill": r["bill_ref"], "note": r["note_no"], "reason": r["reason"],
-                         "amount": r["amount"], "conf": r["confidence"], "status": r["review_status"], "flags": ", ".join(json.loads(r["flags"]))} for r in engine.queue(c)]
-                act = lambda r: (post_form("/verify", "Verify", id=r["id"]) if not r["flags"] else f'<span class=flag title="{e(r["flags"])}">held</span>') + " " + post_form("/reject", "Reject", id=r["id"]) + f' <a href="/edit?id={r["id"]}">edit</a>'
+                rows = []
+                for r in engine.queue(c):
+                    fl, ctx = engine.validate(c, r)
+                    amt = r["amount"] if r["amount"] is not None else ctx.get("amount")
+                    rows.append({"id": r["id"], "date": r["note_date"], "party": (ctx.get("party") or {"name": r["party_text"]})["name"], "bill": r["bill_ref"],
+                                 "note": r["note_no"], "reason": r["reason"], "amount": f"{amt:,.2f}" if amt is not None else "", "gst": f"{ctx['gst']:,.2f}" if "gst" in ctx else "",
+                                 "mill": (ctx.get("mill") or {"name": ""})["name"], "conf": r["confidence"], "status": r["review_status"],
+                                 "flags": "; ".join(engine.FLAG_TEXT[f] for f in fl)})
+                act = lambda r: (post_form("/verify", "Verify", id=r["id"]) if not r["flags"] else f'<span class=flag>held</span>') + " " + post_form("/reject", "Reject", id=r["id"]) + f' <a href="/edit?id={r["id"]}">edit</a>'
                 self._send(page("<h2>Staging queue (by note date)</h2>" + tbl(rows, act) + "<p>" + post_form("/verify-all", "Verify all clean notes") + "</p>", msg))
             elif u.path == "/edit":
                 r = engine.get(c, int(q["id"][0]))
