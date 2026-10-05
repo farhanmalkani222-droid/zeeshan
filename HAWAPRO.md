@@ -19,6 +19,18 @@ python3 -m hawapro report day-register|bill-outstanding|pending-mill-cn|linkage|
 python3 -m hawapro demo                      # sample data with the plan's mills
 ```
 
+## Intake, web screen, register load (plan Phases 3-5)
+```
+python3 -m hawapro bills-import bills.csv --create-masters   # ref_no,side,date,party_or_mill,quantity_kg,rate[,value,gst_rate,open_balance,linked_ref,gst_no,location]; idempotent
+python3 -m hawapro intake ./incoming --channel whatsapp      # folder or single file of debit-note .pdf/.txt -> staging queue (idempotent by file hash)
+python3 -m hawapro verify-all --min-confidence 0.7           # auto-sign-off only notes the extractor was sure of
+python3 -m hawapro set-ledger sales_adj "Your Sales Adj Ledger"   # also purchase_adj, output_gst, input_gst
+python3 -m hawapro serve [--port 8765]                       # web: queue/verify/reject/edit, upload, post preview + post, reports, mill credit notes, Tally XML download
+```
+- **Extraction** is register-guided: it looks for your known party names/aliases, known sale-bill refs and mill names in the text, then labelled fields (note no., date in `dd-mm-yyyy`/`dd Mon yyyy`/ISO, short qty, accepted rate, amount, GST). PDFs need `pdftotext` (poppler-utils). If `ANTHROPIC_API_KEY` is set, a Claude pass (`HAWAPRO_LLM_MODEL`, default Haiku) runs first and regex fills gaps. Whatever is extracted still goes through every validation check and your sign-off; unreadable files are logged as failed (see Intake page), never posted.
+- **Web screen** binds to `127.0.0.1`; set `HAWAPRO_PASSWORD` (HTTP Basic) before exposing it on a network and put it behind HTTPS. Writes are CSRF-protected. `HAWAPRO_COMPANY` sets the Tally company in the XML.
+- Mail/WhatsApp *fetching* is not automated: save attachments into a folder and run `intake` (or upload on the Intake page).
+
 ## What is enforced
 - **Validation (hold → exceptions queue):** bill exists/open, amount ≤ open balance (also against running balance inside a batch), claim recomputed (`short qty × rate` or `(billed − accepted rate) × qty`, ±₹1), duplicate note rejected (alias-aware), GST recomputed (rate per bill, default 18%), closed-period (`close-period YYYY-MM-DD`), name must resolve to one master, mill must match the bill's trace.
 - **Pairing:** a party note posts only together with its mill debit (same date, linked ids). A sale bill with no linked purchase bill blocks (`NO_MILL_LINK`). The mill debit defaults to the same taxable amount; override with `--mill-amount`.
@@ -28,6 +40,6 @@ python3 -m hawapro demo                      # sample data with the plan's mills
 ## Assumptions to confirm
 - Bill `value` and note `amount` are **taxable**; GST is computed on top.
 - Tally ledger names (`Sales Adjustment - Short/Rate`, `Purchase Adjustment - Short/Rate`, `Output GST`, `Input GST`) are placeholders – edit `hawapro/tally.py:LEDGERS`. Try the XML on a dummy company first; it was validated for balance and well-formedness, not against a live Tally.
-- Not built yet (plan Phases 3–5): PDF/WhatsApp/mail extraction, live Tally sync of bills into the register. Today the register is loaded by hand/CSV and notes are staged by CLI/CSV.
+- Extraction was tested on synthetic notes only; real party layouts will need a pass of tuning (send samples). The register loads from CSV, not live from Tally, and the XML is a file you import (no live Tally connection).
 
-Tests: `python3 -m unittest tests.test_hawapro`
+Tests: `python3 -m unittest tests.test_hawapro tests.test_hawapro_intake_web`

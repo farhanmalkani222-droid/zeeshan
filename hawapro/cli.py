@@ -1,6 +1,6 @@
 """python3 -m hawapro <command>.  DB path: env HAWAPRO_DB (default ./hawapro.db)."""
 import argparse, csv, json, sys
-from . import engine, masters, recon, register, tally
+from . import bills, engine, intake, masters, recon, register, tally
 from .db import connect
 
 
@@ -51,13 +51,17 @@ def main(argv=None):
     for n in ("verify", "reject"):
         a = s.add_parser(n); a.add_argument("id", type=int)
         if n == "reject": a.add_argument("--why", default="")
-    a = s.add_parser("verify-all", help="verify every unflagged pending note")
+    a = s.add_parser("verify-all", help="verify every unflagged pending note"); a.add_argument("--min-confidence", type=float, default=0.0, help="skip notes the extractor was less sure of")
     a = s.add_parser("edit"); a.add_argument("id", type=int); a.add_argument("fields", nargs="+", help="field=value")
     a = s.add_parser("close-period"); a.add_argument("through")
     a = s.add_parser("post"); a.add_argument("--dry-run", action="store_true"); a.add_argument("--xml", help="write Tally import XML (all posted vouchers) to this path")
     a.add_argument("--company")
     a = s.add_parser("mill-cn"); a.add_argument("mill_dn_id", type=int); a.add_argument("cn_no"); a.add_argument("date"); a.add_argument("amount", type=float)
     a = s.add_parser("report"); a.add_argument("name", choices=sorted(recon.REPORTS)); a.add_argument("--csv", action="store_true")
+    a = s.add_parser("intake", help="extract debit-note PDFs/.txt (file or folder) into the staging queue"); a.add_argument("path"); a.add_argument("--channel", default="manual", choices=["mail", "whatsapp", "manual"])
+    a = s.add_parser("bills-import", help="load the bill register from CSV"); a.add_argument("path"); a.add_argument("--create-masters", action="store_true")
+    a = s.add_parser("set-ledger", help="Tally ledger name: sales_adj|purchase_adj|output_gst|input_gst"); a.add_argument("key", choices=sorted(tally.LEDGERS)); a.add_argument("name")
+    a = s.add_parser("serve", help="web review/posting screen"); a.add_argument("--host", default="127.0.0.1"); a.add_argument("--port", type=int, default=8765)
     s.add_parser("demo")
     args = p.parse_args(argv)
     c = connect()
@@ -96,6 +100,7 @@ def run(c, a):
         engine.verify(c, a.id); print(f"#{a.id} verified")
     elif a.cmd == "verify-all":
         for r in engine.queue(c, ("pending",)):
+            if r["confidence"] < a.min_confidence: print(f"#{r['id']} skipped (confidence {r['confidence']})"); continue
             try: engine.verify(c, r["id"]); print(f"#{r['id']} verified")
             except ValueError as e: print(e)
     elif a.cmd == "reject":
@@ -121,6 +126,17 @@ def run(c, a):
             w = csv.DictWriter(sys.stdout, rows[0].keys()); w.writeheader(); w.writerows(rows)
         else:
             table(rows)
+    elif a.cmd == "intake":
+        import os
+        rows = intake.process_dir(c, a.path, a.channel) if os.path.isdir(a.path) else [(os.path.basename(a.path), *intake.process_file(c, a.path, a.channel))]
+        for r in rows: print(*r)
+    elif a.cmd == "bills-import":
+        added, skipped, errs = bills.import_csv(c, a.path, a.create_masters)
+        print(f"{added} added, {skipped} already present"); [print("  " + e) for e in errs]
+    elif a.cmd == "set-ledger":
+        from .db import set_setting; set_setting(c, "ledger_" + a.key, a.name)
+    elif a.cmd == "serve":
+        c.commit(); from .web import serve; serve(a.host, a.port)
     elif a.cmd == "demo":
         demo(c); print("demo data loaded; try: queue, verify-all, post --dry-run")
 

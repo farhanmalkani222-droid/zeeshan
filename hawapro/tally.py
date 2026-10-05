@@ -20,7 +20,8 @@ def _entry(ledger, amount, debit, bill=None):
 
 
 def vouchers(c, company=None, ledgers=None, include_exported=False):
-    L = {**LEDGERS, **(ledgers or {})}
+    from .db import get_setting
+    L = {**LEDGERS, **{k: get_setting(c, "ledger_" + k) for k in LEDGERS if get_setting(c, "ledger_" + k)}, **(ledgers or {})}
     out = []
     for n in c.execute("""SELECT n.*, m.name ledger, b.ref_no bill_ref FROM notes n JOIN masters m ON m.id=n.master_id
                           JOIN bills b ON b.id=n.bill_id WHERE n.note_type IN ('CN-to-party','DN-to-mill') AND (n.exported=0 OR ?) ORDER BY n.note_date, n.id""", (int(include_exported),)):
